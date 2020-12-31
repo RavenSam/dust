@@ -1,0 +1,183 @@
+/* 
+***************************************************************************
+***************************************************************************
+***************************************************************************
+SHARED
+***************************************************************************
+***************************************************************************
+***************************************************************************
+*/
+
+.signUp,
+.logIn {
+   width: 100%;
+   min-height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   .card {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      background: var(--color-cd);
+      padding: 1.5rem 1rem;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+      .cardTitle {
+         font-size: 27px;
+         font-weight: 300;
+         letter-spacing: 2.5px;
+         text-transform: capitalize;
+         margin: 1rem 0;
+         display: inline-block;
+      }
+
+      .socialBtn {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         margin: 1.2rem 0;
+
+         & > a {
+            width: 45%;
+            border-radius: 30px;
+            border: 1px solid var(--grey);
+            padding: 0.5rem 0;
+
+            &:hover {
+               border-color: var(--color-primary);
+               background: var(--color-in);
+            }
+
+            & > div {
+               height: 25px;
+            }
+         }
+      }
+
+      .or {
+         display: block;
+         position: relative;
+         color: var(--grey);
+         font-size: 1rem;
+         letter-spacing: 2px;
+         margin: 1rem 0;
+
+         &::before,
+         &::after {
+            content: "";
+            position: absolute;
+            background-color: var(--grey);
+            width: 40%;
+            height: 1px;
+            top: 50%;
+            margin: 0 0.5rem;
+            transform: translateY(50%);
+         }
+         &::before {
+            left: 0;
+         }
+
+         &::after {
+            right: 0;
+         }
+      }
+
+      .form {
+         display: flex;
+         flex-direction: column;
+
+         .input {
+            position: relative;
+            border: 1px solid transparent;
+            background: var(--color-in);
+            border-radius: 30px;
+            margin: 0.5rem 0;
+
+            input {
+               width: 100%;
+            }
+
+            svg {
+               position: absolute;
+               top: 50%;
+               right: 8px;
+               transform: translate(-50%, -50%);
+               cursor: pointer;
+            }
+         }
+      }
+
+      & p {
+         font-size: 0.9rem;
+         letter-spacing: 1.4px;
+         color: var(--grey);
+         margin: 0.8rem 0;
+
+         a {
+            color: var(--color-primary);
+         }
+      }
+   }
+}
+
+/* 
+***************************************************************************
+***************************************************************************
+***************************************************************************
+SIGN IN PAGE
+***************************************************************************
+***************************************************************************
+***************************************************************************
+*/
+
+.signIn {
+   .card {
+      min-height: 600px;
+   }
+}
+
+/* 
+***************************************************************************
+***************************************************************************
+***************************************************************************
+LOGIN PAGE
+***************************************************************************
+***************************************************************************
+***************************************************************************
+*/
+
+.logIn {
+   .card {
+      min-height: 400px;
+
+      .cardSubTitle {
+         display: inline-block;
+         width: 100%;
+         font-size: 14px;
+         letter-spacing: 1.5px;
+         font-weight: 300;
+         color: var(--grey);
+      }
+   }
+}
+
+/* 
+***************************************************************************
+***************************************************************************
+***************************************************************************
+MEDIA
+***************************************************************************
+***************************************************************************
+***************************************************************************
+*/
+
+@media (max-width: 425px) {
+   .card {
+      height: 100vh;
+      border-radius: 0px !important;
+      box-shadow: none;
+   }
+}
