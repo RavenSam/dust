@@ -2,9 +2,10 @@ import { useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import Notification from "../components/notification/Notification"
 
 // get our fontawesome imports
-import { faEye, faEnvelope, faUser, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { faEye, faEnvelope, faUser, faEyeSlash, faTimesCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 // StyleSheets
@@ -64,6 +65,12 @@ export default function SignIn() {
 
                <div className={styles.or}>or</div>
 
+               <Notification type="success" msg="Error Notification" />
+               <Notification type="success" msg="Error Notification" />
+               <Notification type="error" msg="Error Notification" />
+               <Notification type="warning" msg="Error Notification" />
+               <Notification type="info" msg="Error Notification" />
+
                <form className={styles.form}>
                   <div className={styles.input}>
                      <input type="text" placeholder="Username" name="username" />
@@ -77,6 +84,7 @@ export default function SignIn() {
 
                   <div className={styles.input}>
                      <input type={showPw ? "text" : "password"} placeholder="Your Password" name="password" />
+
                      <FontAwesomeIcon icon={showPw ? faEye : faEyeSlash} onClick={() => setShowPw(!showPw)} />
                   </div>
 
