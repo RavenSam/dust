@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 // get our fontawesome imports
 import { faEye, faEnvelope, faUser, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
@@ -8,6 +9,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 // StyleSheets
 import styles from "../styles/Sign.module.scss"
+
+// Animation Options
+const containerVariants = {
+   hidden: {
+      opacity: 0,
+      x: "100vw",
+   },
+   visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring" },
+   },
+   exit: {
+      opacity: 0,
+      x: "100vw",
+      transition: { ease: "easeInOut" },
+   },
+}
 
 export default function SignIn() {
    const [showPw, setShowPw] = useState(false)
@@ -20,7 +39,13 @@ export default function SignIn() {
          </Head>
 
          <div className={styles.signUp}>
-            <div className={styles.card}>
+            <motion.div
+               className={styles.card}
+               variants={containerVariants}
+               initial="hidden"
+               animate="visible"
+               exit="exit"
+            >
                <h3 className={styles.cardTitle}>Sign up With</h3>
 
                <div className={styles.socialBtn}>
@@ -69,7 +94,7 @@ export default function SignIn() {
                      <a>Log In.</a>
                   </Link>
                </p>
-            </div>
+            </motion.div>
          </div>
       </>
    )
