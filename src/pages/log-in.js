@@ -1,7 +1,10 @@
 import { useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
+import { useFormik } from "formik"
+import * as Yup from "yup"
 import { motion } from "framer-motion"
+import Notification from "../components/notification/Notification"
 
 // get our fontawesome imports
 import { faEye, faEnvelope, faUser, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
@@ -30,6 +33,21 @@ const containerVariants = {
 
 export default function SignIn() {
    const [showPw, setShowPw] = useState(false)
+
+   // Formik
+   const formik = useFormik({
+      initialValues: {
+         email: "",
+         password: "",
+      },
+      validationSchema: Yup.object({
+         email: Yup.string().email("Invalid email format").required("Required!"),
+         password: Yup.string().min(8, "Minimum 8 characters").required("Required!"),
+      }),
+      onSubmit: (values) => {
+         alert(JSON.stringify(values, null, 2))
+      },
+   })
 
    return (
       <>
@@ -65,16 +83,38 @@ export default function SignIn() {
 
                <div className={styles.or}>or</div>
 
-               <form className={styles.form}>
+               <form className={styles.form} onSubmit={formik.handleSubmit}>
                   <div className={styles.input}>
-                     <input type="text" placeholder="Your Email" name="email" />
+                     <input
+                        autoComplete="nope"
+                        type="text"
+                        placeholder="Your Email"
+                        name="email"
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                     />
+
                      <FontAwesomeIcon icon={faEnvelope} />
                   </div>
+                  {formik.errors.email && formik.touched.email && (
+                     <Notification type="error" msg={formik.errors.email} />
+                  )}
 
                   <div className={styles.input}>
-                     <input type={showPw ? "text" : "password"} placeholder="Your Password" name="password" />
+                     <input
+                        autoComplete="nope"
+                        type={showPw ? "text" : "password"}
+                        placeholder="Your Password"
+                        name="password"
+                        value={formik.values.password}
+                        onChange={formik.handleChange}
+                     />
+
                      <FontAwesomeIcon icon={showPw ? faEye : faEyeSlash} onClick={() => setShowPw(!showPw)} />
                   </div>
+                  {formik.errors.password && formik.touched.password && (
+                     <Notification type="error" msg={formik.errors.password} />
+                  )}
 
                   <input type="submit" value="Sign Up" className="btn btn-primary" />
                </form>
