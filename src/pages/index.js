@@ -1,15 +1,37 @@
 import Head from "next/head"
 import styles from "../styles/Home.module.scss"
+import { motion } from "framer-motion"
 
 // Components
 import { Header, Footer } from "../components"
+
+// Animation Options
+const containerVariants = {
+   hidden: {
+      opacity: 0,
+   },
+   visible: {
+      opacity: 1,
+      transition: { duration: 0.5 },
+   },
+   exit: {
+      opacity: 0,
+      transition: { ease: "easeInOut" },
+   },
+}
 
 export default function Home() {
    return (
       <>
          <Header position="sticky" />
 
-         <div className={styles.home}>
+         <motion.div
+            className={styles.home}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+         >
             <Head>
                <title>Create Next App</title>
                <link rel="icon" href="/favicon.ico" />
@@ -54,7 +76,7 @@ export default function Home() {
                   minima molestias omnis, quos vero neque qui nisi? Mollitia, ducimus!
                </p>
             </div>
-         </div>
+         </motion.div>
       </>
    )
 }

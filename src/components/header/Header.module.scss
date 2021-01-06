@@ -116,22 +116,39 @@ $light: #dcdde1;
          .links {
             transform: translateX(150%);
          }
+
          .links.open {
             position: absolute;
             flex-direction: column;
-            background: rgba(0, 0, 0, 0.9);
-            width: 100%;
+            background-color: var(--color-cd);
+            width: 60%;
             height: 100vh;
             top: 0;
             right: 0;
-            left: 0;
+            // left: 0;
             bottom: 0;
             transform: translateX(0);
             transition: transform 0.4s ease-in-out;
 
             li {
-               padding: 1rem;
+               // padding: 1rem;
                font-size: 1.2rem;
+               width: 100%;
+
+               a {
+                  display: block;
+                  background: var(--color-in);
+                  width: 100%;
+                  margin: 1px 0;
+                  color: var(--color-text) !important;
+                  border-left: 4px solid transparent;
+
+                  &:hover,
+                  &.current {
+                     border-left-color: var(--color-primary);
+                     background: var(--color-bg);
+                  }
+               }
             }
          }
       }
@@ -142,7 +159,7 @@ $light: #dcdde1;
             width: 100%;
 
             .burger {
-               i {
+               span {
                   background-color: $dark;
                }
             }
@@ -173,7 +190,8 @@ $light: #dcdde1;
    bottom: 0;
    transition: transform 0.4s;
 
-   i {
+   span {
+      display: block;
       background-color: #fff;
       border-radius: 2px;
       display: block;
@@ -187,17 +205,17 @@ $light: #dcdde1;
       //   transform: rotate(-90deg);
    }
 
-   &.open i {
+   &.open span {
       &:nth-child(1) {
-         transform: translate(-4px, 10px) rotate(135deg);
-         background-color: #fff !important;
+         transform: translate(-3px, 9px) rotate(135deg);
+         background: var(--color-text) !important;
       }
       &:nth-child(2) {
          transform: scale(0);
       }
       &:nth-child(3) {
-         transform: translate(-5px, -8px) rotate(-135deg);
-         background-color: #fff !important;
+         transform: translate(-3px, -6px) rotate(-135deg);
+         background: var(--color-text) !important;
       }
    }
 }

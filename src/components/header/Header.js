@@ -1,9 +1,28 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { motion } from "framer-motion"
 
 // StyleSheets
 import styles from "./Header.module.scss"
+
+// Animation Options
+const containerVariants = {
+   hidden: {
+      opacity: 0,
+      y: "-100vw",
+   },
+   visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring" },
+   },
+   exit: {
+      opacity: 0,
+      y: "-100vw",
+      transition: { ease: "easeInOut" },
+   },
+}
 
 export default function Header({ position }) {
    const [scrolled, setScrolled] = useState(false)
@@ -13,7 +32,7 @@ export default function Header({ position }) {
 
    useEffect(() => {
       window.addEventListener("scroll", () => (window.scrollY > 50 ? setScrolled(true) : setScrolled(false)))
-   })
+   }, [scrolled])
 
    const links = [
       { name: "Home", href: "/" },
@@ -22,7 +41,11 @@ export default function Header({ position }) {
    ]
 
    return (
-      <header
+      <motion.header
+         variants={containerVariants}
+         initial="hidden"
+         animate="visible"
+         exit="exit"
          className={`${styles.header} ${position === "sticky" && styles.sticky} ${
             position === "sticky" && scrolled && styles.scroll
          }`}
@@ -43,18 +66,18 @@ export default function Header({ position }) {
                {links.map((link) => (
                   <li key={link.name}>
                      <Link href={link.href}>
-                        <a className={router.pathname === link.href && styles.current}>{link.name}</a>
+                        <a className={router.pathname === link.href ? styles.current : undefined}>{link.name}</a>
                      </Link>
                   </li>
                ))}
             </ul>
 
-            <span onClick={() => setMenuOpen(!menuOpen)} className={`${styles.burger} ${menuOpen && styles.open}`}>
-               <i></i>
-               <i></i>
-               <i></i>
-            </span>
+            <div onClick={() => setMenuOpen(!menuOpen)} className={`${styles.burger} ${menuOpen && styles.open}`}>
+               <span></span>
+               <span></span>
+               <span></span>
+            </div>
          </div>
-      </header>
+      </motion.header>
    )
 }
