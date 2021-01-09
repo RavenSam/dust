@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
+import ThemeContext from "../../contexts/ThemeContext"
+import ThemeSwitcher from "../shared/ThemeSwitcher"
 
 // StyleSheets
 import styles from "./Header.module.scss"
@@ -71,6 +73,8 @@ export default function Header({ position }) {
                   </li>
                ))}
             </ul>
+
+            <ThemeSwitcher />
 
             <div onClick={() => setMenuOpen(!menuOpen)} className={`${styles.burger} ${menuOpen && styles.open}`}>
                <span></span>

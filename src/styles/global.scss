@@ -2,26 +2,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
-// :root {
-//    --color-bg: rgb(31, 29, 43);
-//    --color-cd: #252836;
-//    --color-in: #1b1d25;
-//    --color-text: #fff;
-//    --grey: #6c6f79;
-
-//    --color-primary: #3c56fc;
-// }
-
-:root {
-   --color-bg: #f4f4f8;
-   --color-cd: #fff;
-   --color-in: #ececec;
-   --color-text: #000;
-   --grey: #6f7275;
-
-   --color-primary: #3c56fc;
-}
-
 html,
 body {
    padding: 0;
@@ -79,13 +59,24 @@ input:focus {
    border-color: var(--color-primary);
 }
 
+.rounded {
+   border-radius: 100%;
+   padding: 0;
+   width: 30px;
+   height: 30px;
+   line-height: 40px;
+   color: var(--color-text);
+}
+
 .btn {
+   border: 1px solid transparent;
    padding: 10px 20px;
    margin: 0.8rem 0;
    text-transform: uppercase;
    letter-spacing: 1.8px;
    font-size: 1rem;
    cursor: pointer;
+   transition: all 0.5s;
 }
 
 .btn-primary {
@@ -94,6 +85,7 @@ input:focus {
 }
 
 .btn-primary:hover {
+   text-shadow: #fff 0px 0px 5px, #fff 0px 0px 10px, #fff 0px 0px 15px;
    animation: pulse 1s infinite;
 }
 

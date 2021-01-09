@@ -106,9 +106,7 @@ $light: #dcdde1;
       .navContainer {
          //  width: 100% !important;
 
-         .logo {
-            // margin-left: 30px;
-         }
+         // margin-left: 30px;
 
          .burger {
             display: block;
@@ -199,10 +197,6 @@ $light: #dcdde1;
       height: 3px;
       margin-bottom: 0.3rem;
       transition: transform 0.4s;
-   }
-
-   &.open {
-      //   transform: rotate(-90deg);
    }
 
    &.open span {
