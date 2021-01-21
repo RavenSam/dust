@@ -5,13 +5,12 @@ import ThemeContext from "../../contexts/ThemeContext"
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-export default function ThemeSwitcher() {
+export default function ThemeSwitcher({ styles }) {
    const { theme, setTheme } = useContext(ThemeContext)
 
    return (
       <button
-         className="btn rounded"
-         style={{ backgroundColor: "transparent" }}
+         className={`${styles.themeSwitcher}`}
          onClick={() => setTheme(theme === "darkMode" ? "lightMode" : "darkMode")}
       >
          <FontAwesomeIcon icon={theme === "darkMode" ? faSun : faMoon} />

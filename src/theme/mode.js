@@ -1,4 +1,4 @@
-export const darkMode = `  :root {
+export const darkMode = `:root {
    --color-bg: rgb(31, 29, 43);
    --color-cd: #252836;
    --color-in: #1b1d25;

@@ -72,9 +72,9 @@ export default function Header({ position }) {
                      </Link>
                   </li>
                ))}
-            </ul>
 
-            <ThemeSwitcher />
+               <ThemeSwitcher styles={styles} />
+            </ul>
 
             <div onClick={() => setMenuOpen(!menuOpen)} className={`${styles.burger} ${menuOpen && styles.open}`}>
                <span></span>

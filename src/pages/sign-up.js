@@ -31,7 +31,7 @@ const containerVariants = {
    },
 }
 
-export default function SignIn() {
+export default function SignUp() {
    const [showPw, setShowPw] = useState(false)
    const [showPw2, setShowPw2] = useState(false)
 

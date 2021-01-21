@@ -10,6 +10,8 @@ body {
 
    background: var(--color-bg);
    color: var(--color-text);
+
+   transition: background 1s;
 }
 
 a {
@@ -61,11 +63,12 @@ input:focus {
 
 .rounded {
    border-radius: 100%;
+   border: none;
    padding: 0;
    width: 30px;
    height: 30px;
    line-height: 40px;
-   color: var(--color-text);
+   // color: var(--color-text);
 }
 
 .btn {

@@ -12,7 +12,7 @@ $light: #dcdde1;
 
    //On scroll
    &.scroll {
-      background: #ffffffde;
+      background: hsl(0, 0%, 100%);
       padding: 0;
       height: 70px;
       -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
@@ -33,10 +33,9 @@ $light: #dcdde1;
                color: $dark;
             }
 
-            // a:hover,
-            // .current {
-            //    color: var(--color-primary);
-            // }
+            .themeSwitcher {
+               color: $dark;
+            }
          }
       }
    }
@@ -85,11 +84,19 @@ $light: #dcdde1;
             color: var(--color-primary) !important;
          }
 
-         li {
-            a {
-               padding: 1rem;
-               color: $light;
-            }
+         li a {
+            padding: 1rem;
+            color: $light;
+         }
+
+         .themeSwitcher {
+            background: transparent;
+            width: 30px;
+            border: none;
+            font-size: 1.2rem;
+            display: block;
+            color: $light;
+            cursor: pointer;
          }
       }
    }
@@ -129,11 +136,10 @@ $light: #dcdde1;
             transition: transform 0.4s ease-in-out;
 
             li {
-               // padding: 1rem;
-               font-size: 1.2rem;
                width: 100%;
 
                a {
+                  font-size: 1.2rem;
                   display: block;
                   background: var(--color-in);
                   width: 100%;
@@ -148,6 +154,23 @@ $light: #dcdde1;
                   }
                }
             }
+
+            .themeSwitcher {
+               background: var(--color-in);
+               width: 100%;
+               margin: 1px 0;
+               color: var(--color-text) !important;
+               padding: 16px;
+
+               svg {
+                  width: 35px;
+                  display: block;
+               }
+            }
+         }
+
+         .burger {
+            display: block;
          }
       }
 

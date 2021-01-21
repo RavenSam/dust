@@ -31,7 +31,7 @@ const containerVariants = {
    },
 }
 
-export default function SignIn() {
+export default function LogIn() {
    const [showPw, setShowPw] = useState(false)
 
    // Formik
