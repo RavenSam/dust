@@ -1,0 +1,38 @@
+.modal {
+   position: fixed;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   top: 0;
+   background: rgba(0, 0, 0, 0.5);
+   z-index: 100;
+   padding: 1rem;
+
+   .card {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      width: 100%;
+      max-width: 400px;
+      min-height: 200px;
+      text-align: center;
+      background: var(--color-cd);
+      padding: 1.5rem 1rem;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+      .dismiss {
+         position: absolute;
+         right: 1rem;
+         top: 0.8rem;
+         width: 20px;
+         height: 20px;
+         background: transparent;
+         border: none;
+         color: var(--color-text);
+         cursor: pointer;
+      }
+   }
+}

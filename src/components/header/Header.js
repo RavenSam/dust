@@ -2,8 +2,10 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
-import ThemeContext from "../../contexts/ThemeContext"
 import ThemeSwitcher from "../shared/ThemeSwitcher"
+
+// Components
+import { ButtonModal } from "../modal/Modal"
 
 // StyleSheets
 import styles from "./Header.module.scss"
@@ -73,7 +75,11 @@ export default function Header({ position }) {
                   </li>
                ))}
 
-               <ThemeSwitcher styles={styles} />
+               <div className={styles.btnLs}>
+                  <ButtonModal>Modal</ButtonModal>
+
+                  <ThemeSwitcher styles={styles} />
+               </div>
             </ul>
 
             <div onClick={() => setMenuOpen(!menuOpen)} className={`${styles.burger} ${menuOpen && styles.open}`}>

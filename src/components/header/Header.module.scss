@@ -81,7 +81,7 @@ $light: #dcdde1;
 
          a:hover,
          .current {
-            color: var(--color-primary) !important;
+            color: var(--color-primary);
          }
 
          li a {
@@ -89,14 +89,27 @@ $light: #dcdde1;
             color: $light;
          }
 
-         .themeSwitcher {
-            background: transparent;
-            width: 30px;
-            border: none;
-            font-size: 1.2rem;
-            display: block;
-            color: $light;
-            cursor: pointer;
+         .btnLs {
+            display: flex;
+            align-items: center;
+
+            button {
+               margin: 0 1rem;
+            }
+
+            .themeSwitcher {
+               background: transparent;
+               border: none;
+               font-size: 1.2rem;
+               display: block;
+               color: $light;
+               cursor: pointer;
+
+               svg {
+                  width: 25px;
+                  display: block;
+               }
+            }
          }
       }
    }
@@ -161,11 +174,6 @@ $light: #dcdde1;
                margin: 1px 0;
                color: var(--color-text) !important;
                padding: 16px;
-
-               svg {
-                  width: 35px;
-                  display: block;
-               }
             }
          }
 

@@ -9,6 +9,9 @@ import "../styles/global.scss"
 
 export default function MyApp({ Component, pageProps, router }) {
    const [theme, setTheme] = useState("darkMode")
+   const [displayModal, setDisplayModal] = useState("none")
+
+   const value = { theme, setTheme, displayModal, setDisplayModal }
 
    return (
       <>
@@ -17,10 +20,8 @@ export default function MyApp({ Component, pageProps, router }) {
          </Head>
 
          <AnimatePresence exitBeforeEnter>
-            <ThemeContext.Provider value={{ theme, setTheme }} key={router.route}>
-               <div className={theme}>
-                  <Component {...pageProps} />
-               </div>
+            <ThemeContext.Provider value={value} key={router.route}>
+               <Component {...pageProps} />
             </ThemeContext.Provider>
          </AnimatePresence>
       </>

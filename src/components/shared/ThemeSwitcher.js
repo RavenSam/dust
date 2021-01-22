@@ -2,7 +2,7 @@ import { useContext } from "react"
 import ThemeContext from "../../contexts/ThemeContext"
 
 // get our fontawesome imports
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
+import { faSun, faMoon } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function ThemeSwitcher({ styles }) {

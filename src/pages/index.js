@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.scss"
 import { motion } from "framer-motion"
 
 // Components
-import { Header, Footer } from "../components"
+import { Header, Modal } from "../components"
 
 // Animation Options
 const containerVariants = {
@@ -23,7 +23,14 @@ const containerVariants = {
 export default function Home() {
    return (
       <>
+         <Head>
+            <title>Home</title>
+            <link rel="icon" href="/favicon.ico" />
+         </Head>
+
          <Header position="sticky" />
+
+         <Modal />
 
          <motion.div
             className={styles.home}
@@ -32,11 +39,6 @@ export default function Home() {
             animate="visible"
             exit="exit"
          >
-            <Head>
-               <title>Create Next App</title>
-               <link rel="icon" href="/favicon.ico" />
-            </Head>
-
             <div className="container">
                <h1>Welcome</h1>
 
