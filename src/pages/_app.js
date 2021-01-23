@@ -1,28 +1,20 @@
-import { useState } from "react"
-import Head from "next/head"
 import { AnimatePresence } from "framer-motion" // For Animation
-import ThemeContext from "../contexts/ThemeContext"
-import { darkMode, lightMode } from "../theme/mode"
 
 // Stylesheets
 import "../styles/global.scss"
 
-export default function MyApp({ Component, pageProps, router }) {
-   const [theme, setTheme] = useState("darkMode")
-   const [displayModal, setDisplayModal] = useState("none")
+// Layouts
+import DefaultLayout from "../layouts/DefaultLayout"
 
-   const value = { theme, setTheme, displayModal, setDisplayModal }
+export default function MyApp({ Component, pageProps, router }) {
+   const Layout = Component.Layout ? Component.Layout : DefaultLayout
 
    return (
       <>
-         <Head>
-            <style>{theme === "darkMode" ? darkMode : lightMode}</style>
-         </Head>
-
          <AnimatePresence exitBeforeEnter>
-            <ThemeContext.Provider value={value} key={router.route}>
+            <Layout key={router.route}>
                <Component {...pageProps} />
-            </ThemeContext.Provider>
+            </Layout>
          </AnimatePresence>
       </>
    )

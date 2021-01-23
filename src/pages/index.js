@@ -2,9 +2,6 @@ import Head from "next/head"
 import styles from "../styles/Home.module.scss"
 import { motion } from "framer-motion"
 
-// Components
-import { Header, Modal } from "../components"
-
 // Animation Options
 const containerVariants = {
    hidden: {
@@ -27,10 +24,6 @@ export default function Home() {
             <title>Home</title>
             <link rel="icon" href="/favicon.ico" />
          </Head>
-
-         <Header position="sticky" />
-
-         <Modal />
 
          <motion.div
             className={styles.home}
