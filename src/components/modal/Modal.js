@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { useContext } from "react"
-import ThemeContext from "../../contexts/ThemeContext"
+import ThemeContext from "../../contexts/GlobalContexts"
 
 // get out fontawesome imports
 import { faTimes } from "@fortawesome/free-solid-svg-icons"

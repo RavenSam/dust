@@ -32,6 +32,7 @@ export default function Home() {
             animate="visible"
             exit="exit"
          >
+         
             <div className="container">
                <h1>Welcome</h1>
 

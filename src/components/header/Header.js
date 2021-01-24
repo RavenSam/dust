@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
-import ThemeSwitcher from "../shared/ThemeSwitcher"
+import ThemeSwitcher from "../themeSwither/ThemeSwitcher"
 
 // Components
 import { ButtonModal } from "../modal/Modal"
