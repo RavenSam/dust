@@ -42,6 +42,7 @@ export default function Header({ position }) {
       { name: "Home", href: "/" },
       { name: "Sign Up", href: "/sign-up" },
       { name: "Login", href: "/log-in" },
+      { name: "Logout", href: "/api/auth/logout" },
    ]
 
    return (

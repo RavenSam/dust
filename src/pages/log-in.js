@@ -68,13 +68,13 @@ export default function LogIn() {
                <h4 className={styles.cardSubTitle}>Log In With</h4>
 
                <div className={styles.socialBtn}>
-                  <a href="#">
+                  <a href="/api/auth/google">
                      <div>
                         <img src="/google-icon.svg" alt="Sign With Google" />
                      </div>
                   </a>
 
-                  <a href="#">
+                  <a href="/api/auth/facebook">
                      <div>
                         <img src="/facebook-2.svg" alt="Sign With facebook" />
                      </div>
