@@ -5,10 +5,24 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true,
    },
+
+   username: {
+      type: String,
+      required: true,
+   },
+
    email: {
       type: String,
       required: true,
    },
+
+   provider: {
+      type: String,
+      required: true,
+   },
+
+   providerId: String,
+
    createdAt: {
       type: Date,
       default: Date.now,
