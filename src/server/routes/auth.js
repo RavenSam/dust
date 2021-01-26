@@ -28,8 +28,8 @@ router.get(
  * @description Redirect User after successful Authentication
  */
 router.get("/google/redirect", passport.authenticate("google", { failureRedirect: "/login" }), (req, res) => {
-   // res.send(req.user);
-   res.redirect("/dashboard")
+   // res.send(req.user)
+   res.redirect("/user/dashboard")
 })
 
 /** ********************************************************************
@@ -48,7 +48,7 @@ router.get("/github", passport.authenticate("github", { scope: ["user:email"] })
  */
 router.get("/github/redirect", passport.authenticate("github", { failureRedirect: "/login" }), (req, res) => {
    // res.send(req.user);
-   res.redirect("/dashboard")
+   res.redirect("/user/dashboard")
 })
 
 /** ********************************************************************

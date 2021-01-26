@@ -1,4 +1,6 @@
 import Head from "next/head"
+import Router from "next/router"
+import { useEffect } from "react"
 import { motion } from "framer-motion"
 
 // Animation Options
@@ -16,7 +18,7 @@ const containerVariants = {
    },
 }
 
-export default function Dashboard() {
+export default function Dashboard({ user }) {
    return (
       <>
          <Head>
@@ -35,4 +37,10 @@ export default function Dashboard() {
          </motion.div>
       </>
    )
+}
+
+Dashboard.getInitialProps = async (ctx) => {
+   let user = JSON.stringify(ctx.req.user) || null
+
+   return { user }
 }
