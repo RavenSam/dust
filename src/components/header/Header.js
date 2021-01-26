@@ -40,8 +40,9 @@ export default function Header({ position }) {
 
    const links = [
       { name: "Home", href: "/" },
-      { name: "Sign Up", href: "/sign-up" },
-      { name: "Login", href: "/log-in" },
+      { name: "Sign Up", href: "/signup" },
+      { name: "Login", href: "/login" },
+      { name: "Dashboard", href: "/dashboard" },
       { name: "Logout", href: "/api/auth/logout" },
    ]
 

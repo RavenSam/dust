@@ -27,18 +27,28 @@ router.get(
  * @route   ==> /api/auth/google/redirect
  * @description Redirect User after successful Authentication
  */
-router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-   res.send("Successfuly Authenticated with google")
+router.get("/google/redirect", passport.authenticate("google", { failureRedirect: "/login" }), (req, res) => {
+   // res.send(req.user);
+   res.redirect("/dashboard")
 })
 
 /** ********************************************************************
- *  ====> OAth WITH FACEBOOK
+ *  ====> OAth WITH GITHUB
  *  *********************************************************************
- * @route   ==> /api/auth/facebook
- * @description User Authentication with facebook using passport
+ * @route   ==> /api/auth/github
+ * @description User Authentication with github using passport
  */
-router.get("/facebook", (req, res) => {
-   res.send("Logging with facebook")
+router.get("/github", passport.authenticate("github", { scope: ["user:email"] }))
+
+/** ********************************************************************
+ *  ====> GITHUB REDIRECT
+ *  *********************************************************************
+ * @route   ==> /api/auth/github/redirect
+ * @description Redirect User after successful Authentication
+ */
+router.get("/github/redirect", passport.authenticate("github", { failureRedirect: "/login" }), (req, res) => {
+   // res.send(req.user);
+   res.redirect("/dashboard")
 })
 
 /** ********************************************************************
@@ -48,7 +58,8 @@ router.get("/facebook", (req, res) => {
  * @description Logout the user
  */
 router.get("/logout", (req, res) => {
-   res.send("Loggout")
+   req.logout()
+   res.redirect("/")
 })
 
 module.exports = router

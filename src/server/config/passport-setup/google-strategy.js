@@ -1,7 +1,6 @@
 const passport = require("passport")
-const GoogleStrategy = require("passport-google-oauth20")
-const FacebookStrategy = require("passport-facebook")
-const User = require("../models/user-model")
+const GoogleStrategy = require("passport-google-oauth20").Strategy
+const User = require("../../models/user-model")
 
 require("dotenv").config()
 
@@ -15,28 +14,39 @@ passport.use(
       },
       (accessToken, refreshToken, profile, done) => {
          // Passport callback
-         const { provider, displayName, id, emails, name } = profile
+         const { provider, displayName, id, emails, name, _json } = profile
          const email = emails[0].value
 
          User.findOne({ email }).then((user) => {
             if (user) {
                // If User With THAT email Exist
-               console.log({ user })
+               done(null, user)
             } else {
                // If User With THAT email Do Not Exist
                const newUser = {
                   name: `${name.familyName} ${name.givenName}`,
                   username: displayName,
                   email,
+                  thumbnail: _json.image.url,
                   provider,
                   providerId: id,
                }
 
                new User(newUser).save().then((savedUser) => {
-                  console.log(savedUser)
+                  done(null, savedUser)
                })
             }
          })
       }
    )
 )
+
+passport.serializeUser((user, done) => {
+   done(null, user.id)
+})
+
+passport.deserializeUser((id, done) => {
+   User.findById(id).then((user) => {
+      done(null, user)
+   })
+})

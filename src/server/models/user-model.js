@@ -16,6 +16,11 @@ const userSchema = new mongoose.Schema({
       required: true,
    },
 
+   thumbnail: {
+      type: String,
+      required: true,
+   },
+
    provider: {
       type: String,
       required: true,

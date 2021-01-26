@@ -16,7 +16,7 @@ export default function DefaultLayout({ children }) {
    // Values of Context
    const value = { theme, setTheme, displayModal, setDisplayModal }
 
-   const noNavIn = ["/sign-up", "/log-in"] // Do not show nav bar in these pages
+   const noNavIn = ["/signup", "/login"] // Do not show nav bar in these pages
    const showNav = !noNavIn.includes(router.pathname)
 
    useEffect(() => {
@@ -37,8 +37,7 @@ export default function DefaultLayout({ children }) {
             {showNav && <Header position="sticky" />}
 
             <Modal />
-
-            {children}
+            <div className="container">{children}</div>
          </ThemeContext.Provider>
       </>
    )

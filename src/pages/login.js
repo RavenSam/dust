@@ -2,8 +2,8 @@ import { useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
 import { useFormik } from "formik"
-import { motion } from "framer-motion"
 import * as Yup from "yup"
+import { motion } from "framer-motion"
 import Notification from "../components/notification/Notification"
 
 // get our fontawesome imports
@@ -17,7 +17,7 @@ import styles from "../styles/Sign.module.scss"
 const containerVariants = {
    hidden: {
       opacity: 0,
-      x: "100vw",
+      x: "-100vw",
    },
    visible: {
       opacity: 1,
@@ -26,30 +26,23 @@ const containerVariants = {
    },
    exit: {
       opacity: 0,
-      x: "100vw",
+      x: "-100vw",
       transition: { ease: "easeInOut" },
    },
 }
 
-export default function SignUp() {
+export default function LogIn() {
    const [showPw, setShowPw] = useState(false)
-   const [showPw2, setShowPw2] = useState(false)
 
    // Formik
    const formik = useFormik({
       initialValues: {
-         username: "",
          email: "",
          password: "",
-         password2: "",
       },
       validationSchema: Yup.object({
-         username: Yup.string().min(5, "Mininum 5 characters").max(15, "Maximum 15 characters").required("Required!"),
          email: Yup.string().email("Invalid email format").required("Required!"),
          password: Yup.string().min(8, "Minimum 8 characters").required("Required!"),
-         password2: Yup.string()
-            .oneOf([Yup.ref("password")], "Password's not match")
-            .required("Required!"),
       }),
       onSubmit: (values) => {
          alert(JSON.stringify(values, null, 2))
@@ -59,18 +52,20 @@ export default function SignUp() {
    return (
       <>
          <Head>
-            <title>Sign Up</title>
+            <title>Log In</title>
          </Head>
 
-         <div className={styles.signUp}>
+         <div className={styles.logIn}>
             <motion.div
                className={styles.card}
+               exit="exit"
                variants={containerVariants}
                initial="hidden"
                animate="visible"
-               exit="exit"
             >
-               <h3 className={styles.cardTitle}>Sign up With</h3>
+               <h3 className={styles.cardTitle}>Welcome Back</h3>
+
+               <h4 className={styles.cardSubTitle}>Log In With</h4>
 
                <div className={styles.socialBtn}>
                   <a href="/api/auth/google">
@@ -79,9 +74,9 @@ export default function SignUp() {
                      </div>
                   </a>
 
-                  <a href="/api/auth/facebook">
+                  <a href="/api/auth/github">
                      <div>
-                        <img src="/facebook-2.svg" alt="Sign With facebook" />
+                        <img src="/github-1.svg" alt="Sign With github" />
                      </div>
                   </a>
                </div>
@@ -93,33 +88,21 @@ export default function SignUp() {
                      <input
                         autoComplete="nope"
                         type="text"
-                        placeholder="Username"
-                        name="username"
-                        value={formik.values.username}
-                        onChange={formik.handleChange}
-                     />
-                     <FontAwesomeIcon icon={faUser} />
-                  </div>
-                  {formik.errors.username && formik.touched.username && (
-                     <Notification type="error" msg={formik.errors.username} />
-                  )}
-
-                  <div className={styles.input}>
-                     <input
-                        autoComplete="nope"
-                        type="text"
-                        placeholder="Email"
+                        placeholder="Your Email"
                         name="email"
                         value={formik.values.email}
                         onChange={formik.handleChange}
                      />
+
                      <FontAwesomeIcon icon={faEnvelope} />
                   </div>
                   {formik.errors.email && formik.touched.email && (
                      <Notification type="error" msg={formik.errors.email} />
                   )}
+
                   <div className={styles.input}>
                      <input
+                        autoComplete="nope"
                         type={showPw ? "text" : "password"}
                         placeholder="Your Password"
                         name="password"
@@ -132,28 +115,20 @@ export default function SignUp() {
                   {formik.errors.password && formik.touched.password && (
                      <Notification type="error" msg={formik.errors.password} />
                   )}
-                  <div className={styles.input}>
-                     <input
-                        type={showPw2 ? "text" : "password"}
-                        placeholder="Confirm Password"
-                        name="password2"
-                        value={formik.values.password2}
-                        onChange={formik.handleChange}
-                     />
-                     <FontAwesomeIcon icon={showPw2 ? faEye : faEyeSlash} onClick={() => setShowPw2(!showPw2)} />
-                  </div>
-                  {formik.errors.password2 && formik.touched.password2 && (
-                     <Notification type="error" msg={formik.errors.password2} />
-                  )}
-                  <motion.input type="submit" value="Sign Up" className="btn btn-primary" />
+
+                  <input type="submit" value="Sign Up" className="btn btn-primary" />
                </form>
 
                <p>
-                  Already have an account?{" "}
-                  <Link href="/log-in">
-                     <a>Log In.</a>
+                  Don't have an account?{" "}
+                  <Link href="/signup">
+                     <a>Sign Up.</a>
                   </Link>
                </p>
+
+               <Link href="/">
+                  <a className={styles.forgetPw}>Forget your password?</a>
+               </Link>
             </motion.div>
          </div>
       </>

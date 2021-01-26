@@ -1,6 +1,8 @@
 const express = require("express")
 const next = require("next")
-const passportSetup = require("./config/passportSetup")
+const passport = require("passport")
+const googleStrategy = require("./config/passport-setup/google-strategy")
+const gitHubStrategy = require("./config/passport-setup/github-strategy")
 const mongoose = require("mongoose")
 
 require("dotenv").config()
@@ -16,6 +18,10 @@ app.prepare().then(() => {
    // Connect to MongoDB
    const optionsDB = { useUnifiedTopology: true, useNewUrlParser: true }
    mongoose.connect(process.env.CONNECT_DB, optionsDB, () => console.log(`> Connected to the DataBase...`))
+
+   // initialize passport
+   server.use(passport.initialize())
+   server.use(passport.session())
 
    //    Routes
    server.use("/api/server", require("./routes"))

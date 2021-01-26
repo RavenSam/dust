@@ -2,8 +2,8 @@ import { useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
 import { useFormik } from "formik"
-import * as Yup from "yup"
 import { motion } from "framer-motion"
+import * as Yup from "yup"
 import Notification from "../components/notification/Notification"
 
 // get our fontawesome imports
@@ -17,7 +17,7 @@ import styles from "../styles/Sign.module.scss"
 const containerVariants = {
    hidden: {
       opacity: 0,
-      x: "-100vw",
+      x: "100vw",
    },
    visible: {
       opacity: 1,
@@ -26,23 +26,30 @@ const containerVariants = {
    },
    exit: {
       opacity: 0,
-      x: "-100vw",
+      x: "100vw",
       transition: { ease: "easeInOut" },
    },
 }
 
-export default function LogIn() {
+export default function SignUp() {
    const [showPw, setShowPw] = useState(false)
+   const [showPw2, setShowPw2] = useState(false)
 
    // Formik
    const formik = useFormik({
       initialValues: {
+         username: "",
          email: "",
          password: "",
+         password2: "",
       },
       validationSchema: Yup.object({
+         username: Yup.string().min(5, "Mininum 5 characters").max(15, "Maximum 15 characters").required("Required!"),
          email: Yup.string().email("Invalid email format").required("Required!"),
          password: Yup.string().min(8, "Minimum 8 characters").required("Required!"),
+         password2: Yup.string()
+            .oneOf([Yup.ref("password")], "Password's not match")
+            .required("Required!"),
       }),
       onSubmit: (values) => {
          alert(JSON.stringify(values, null, 2))
@@ -52,20 +59,18 @@ export default function LogIn() {
    return (
       <>
          <Head>
-            <title>Log In</title>
+            <title>Sign Up</title>
          </Head>
 
-         <div className={styles.logIn}>
+         <div className={styles.signUp}>
             <motion.div
                className={styles.card}
-               exit="exit"
                variants={containerVariants}
                initial="hidden"
                animate="visible"
+               exit="exit"
             >
-               <h3 className={styles.cardTitle}>Welcome Back</h3>
-
-               <h4 className={styles.cardSubTitle}>Log In With</h4>
+               <h3 className={styles.cardTitle}>Sign up With</h3>
 
                <div className={styles.socialBtn}>
                   <a href="/api/auth/google">
@@ -74,9 +79,9 @@ export default function LogIn() {
                      </div>
                   </a>
 
-                  <a href="/api/auth/facebook">
+                  <a href="/api/auth/github">
                      <div>
-                        <img src="/facebook-2.svg" alt="Sign With facebook" />
+                        <img src="/github-1.svg" alt="Sign With github" />
                      </div>
                   </a>
                </div>
@@ -88,21 +93,33 @@ export default function LogIn() {
                      <input
                         autoComplete="nope"
                         type="text"
-                        placeholder="Your Email"
-                        name="email"
-                        value={formik.values.email}
+                        placeholder="Username"
+                        name="username"
+                        value={formik.values.username}
                         onChange={formik.handleChange}
                      />
-
-                     <FontAwesomeIcon icon={faEnvelope} />
+                     <FontAwesomeIcon icon={faUser} />
                   </div>
-                  {formik.errors.email && formik.touched.email && (
-                     <Notification type="error" msg={formik.errors.email} />
+                  {formik.errors.username && formik.touched.username && (
+                     <Notification type="error" msg={formik.errors.username} />
                   )}
 
                   <div className={styles.input}>
                      <input
                         autoComplete="nope"
+                        type="text"
+                        placeholder="Email"
+                        name="email"
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                     />
+                     <FontAwesomeIcon icon={faEnvelope} />
+                  </div>
+                  {formik.errors.email && formik.touched.email && (
+                     <Notification type="error" msg={formik.errors.email} />
+                  )}
+                  <div className={styles.input}>
+                     <input
                         type={showPw ? "text" : "password"}
                         placeholder="Your Password"
                         name="password"
@@ -115,20 +132,28 @@ export default function LogIn() {
                   {formik.errors.password && formik.touched.password && (
                      <Notification type="error" msg={formik.errors.password} />
                   )}
-
-                  <input type="submit" value="Sign Up" className="btn btn-primary" />
+                  <div className={styles.input}>
+                     <input
+                        type={showPw2 ? "text" : "password"}
+                        placeholder="Confirm Password"
+                        name="password2"
+                        value={formik.values.password2}
+                        onChange={formik.handleChange}
+                     />
+                     <FontAwesomeIcon icon={showPw2 ? faEye : faEyeSlash} onClick={() => setShowPw2(!showPw2)} />
+                  </div>
+                  {formik.errors.password2 && formik.touched.password2 && (
+                     <Notification type="error" msg={formik.errors.password2} />
+                  )}
+                  <motion.input type="submit" value="Sign Up" className="btn btn-primary" />
                </form>
 
                <p>
-                  Don't have an account?{" "}
-                  <Link href="/sign-up">
-                     <a>Sign Up.</a>
+                  Already have an account?{" "}
+                  <Link href="/login">
+                     <a>Log In.</a>
                   </Link>
                </p>
-
-               <Link href="/">
-                  <a className={styles.forgetPw}>Forget your password?</a>
-               </Link>
             </motion.div>
          </div>
       </>
