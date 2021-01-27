@@ -42,7 +42,7 @@ export default function Header({ position }) {
       { name: "Home", href: "/" },
       { name: "Sign Up", href: "/signup" },
       { name: "Login", href: "/login" },
-      { name: "Dashboard", href: "/dashboard" },
+      { name: "Dashboard", href: "/user/dashboard" },
       { name: "Logout", href: "/api/auth/logout" },
    ]
 

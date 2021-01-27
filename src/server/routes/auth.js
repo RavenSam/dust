@@ -1,11 +1,72 @@
 const router = require("express").Router()
 const passport = require("passport")
+const User = require("../models/user-model")
+const bcrypt = require("bcryptjs")
+var url = require("url")
+
+function fullUrl(req) {
+   return url.format({ protocol: req.protocol, host: req.get("host") })
+}
 
 /**
  * @route   ==> /api/auth
  */
 router.get("/", (req, res) => {
    res.json({ hello: "auth" })
+})
+
+/** ********************************************************************
+ *  ====> SIGN UP
+ *  *********************************************************************
+ * @route   ==> /api/auth/signup
+ * @description User Authentication (register) with email using passport
+ */
+router.post("/signup", (req, res) => {
+   let errors = []
+   const { username, email, password } = req.body
+   const thumbnail = `${fullUrl(req)}/img/avatar/profil.svg`
+
+   User.findOne({ email }).then((user) => {
+      if (user) {
+         // User exist
+         errors.push({ msg: "Email already registered" })
+
+         // TRY USE FLASH
+         res.json({ errors, status: "Account already exist" })
+      } else {
+         const newUser = new User({ username, email, password, thumbnail, provider: "local" })
+
+         bcrypt.genSalt(10, (err, salt) =>
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+               if (err) throw err
+
+               newUser.password = hash
+
+               // Save The User
+               newUser
+                  .save()
+                  .then((user) => {
+                     // req.flash("success_msg", "You ara now registered and can Login")
+                     console.log(user)
+
+                     // TRY USE FLASH
+                     res.json({ errors, status: "You Have Successfuly Registred", user })
+                  })
+                  .catch((err) => console.log(err))
+            })
+         )
+      }
+   })
+})
+
+/** ********************************************************************
+ *  ====> LOG IN
+ *  *********************************************************************
+ * @route   ==> /api/auth/login
+ * @description User Authentication (log in) with email using passport
+ */
+router.post("/login", passport.authenticate("local", { failureRedirect: "/login" }), (req, res) => {
+   res.send("log in")
 })
 
 /** ********************************************************************

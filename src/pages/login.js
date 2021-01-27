@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { motion } from "framer-motion"
+import axios from "axios"
 import Notification from "../components/notification/Notification"
 
 // get our fontawesome imports
@@ -37,15 +38,30 @@ export default function LogIn() {
    // Formik
    const formik = useFormik({
       initialValues: {
-         email: "",
-         password: "",
+         email: "johnDoe@exemple.com",
+         password: "11111111111111",
       },
       validationSchema: Yup.object({
          email: Yup.string().email("Invalid email format").required("Required!"),
          password: Yup.string().min(8, "Minimum 8 characters").required("Required!"),
       }),
-      onSubmit: (values) => {
-         alert(JSON.stringify(values, null, 2))
+      onSubmit: async (values) => {
+         try {
+            // setLoading(true)
+
+            const response = await axios.post("/api/auth/login", values)
+            /* 
+            
+            Use Flash Later
+
+            */
+            console.log(response.data)
+            // Router.push(response.data.redirect)
+
+            // setLoading(false)
+         } catch (error) {
+            console.log(error)
+         }
       },
    })
 

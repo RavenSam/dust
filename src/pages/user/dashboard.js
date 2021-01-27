@@ -18,7 +18,7 @@ const containerVariants = {
    },
 }
 
-export default function Dashboard({ user }) {
+export default function Dashboard() {
    return (
       <>
          <Head>
@@ -39,8 +39,8 @@ export default function Dashboard({ user }) {
    )
 }
 
-Dashboard.getInitialProps = async (ctx) => {
-   let user = JSON.stringify(ctx.req.user) || null
+// Dashboard.getInitialProps = async (ctx) => {
+//    let user = JSON.stringify(ctx.req.user) || null
 
-   return { user }
-}
+//    return { user }
+// }

@@ -4,7 +4,9 @@ const passport = require("passport")
 const cookieSession = require("cookie-session")
 const googleStrategy = require("./config/passport-setup/google-strategy")
 const gitHubStrategy = require("./config/passport-setup/github-strategy")
+const localStrategy = require("./config/passport-setup/local-strategy")
 const mongoose = require("mongoose")
+const bodyParser = require("body-parser")
 const { ensureAuthenticated, forwardAuthenticated } = require("./config/helpers/auth-helpers")
 
 require("dotenv").config()
@@ -16,6 +18,10 @@ const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
    const server = express()
+
+   // Body Parser
+   server.use(express.json())
+   server.use(express.urlencoded({ extended: false }))
 
    // Connect to MongoDB
    const optionsDB = { useUnifiedTopology: true, useNewUrlParser: true }

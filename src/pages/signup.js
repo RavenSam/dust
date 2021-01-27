@@ -1,9 +1,11 @@
 import { useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
+import Router from "next/router"
 import { useFormik } from "formik"
 import { motion } from "framer-motion"
 import * as Yup from "yup"
+import axios from "axios"
 import Notification from "../components/notification/Notification"
 
 // get our fontawesome imports
@@ -34,14 +36,15 @@ const containerVariants = {
 export default function SignUp() {
    const [showPw, setShowPw] = useState(false)
    const [showPw2, setShowPw2] = useState(false)
+   const [loading, setLoading] = useState(false)
 
    // Formik
    const formik = useFormik({
       initialValues: {
-         username: "",
-         email: "",
-         password: "",
-         password2: "",
+         username: "ertwwererter",
+         email: "johnDoe@exemple.com",
+         password: "11111111111111",
+         password2: "11111111111111",
       },
       validationSchema: Yup.object({
          username: Yup.string().min(5, "Mininum 5 characters").max(15, "Maximum 15 characters").required("Required!"),
@@ -51,8 +54,23 @@ export default function SignUp() {
             .oneOf([Yup.ref("password")], "Password's not match")
             .required("Required!"),
       }),
-      onSubmit: (values) => {
-         alert(JSON.stringify(values, null, 2))
+      onSubmit: async (values) => {
+         try {
+            setLoading(true)
+
+            const response = await axios.post("/api/auth/signup", values)
+            /* 
+            
+            Use Flash Later
+
+            */
+            console.log(response.data)
+            // Router.push(response.data.redirect)
+
+            setLoading(false)
+         } catch (error) {
+            console.log(error)
+         }
       },
    })
 
@@ -145,7 +163,10 @@ export default function SignUp() {
                   {formik.errors.password2 && formik.touched.password2 && (
                      <Notification type="error" msg={formik.errors.password2} />
                   )}
-                  <motion.input type="submit" value="Sign Up" className="btn btn-primary" />
+
+                  <motion.button type="submit" className="btn btn-primary">
+                     {loading && <img src="/lo.gif" />}b Sign Up
+                  </motion.button>
                </form>
 
                <p>
