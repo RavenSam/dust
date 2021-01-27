@@ -6,8 +6,7 @@ const googleStrategy = require("./config/passport-setup/google-strategy")
 const gitHubStrategy = require("./config/passport-setup/github-strategy")
 const localStrategy = require("./config/passport-setup/local-strategy")
 const mongoose = require("mongoose")
-const bodyParser = require("body-parser")
-const { ensureAuthenticated, forwardAuthenticated } = require("./config/helpers/auth-helpers")
+const { ensureAuthenticated, forwardAuthenticated } = require("./config/helpers/helpers-func")
 
 require("dotenv").config()
 

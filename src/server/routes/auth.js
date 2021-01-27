@@ -2,11 +2,7 @@ const router = require("express").Router()
 const passport = require("passport")
 const User = require("../models/user-model")
 const bcrypt = require("bcryptjs")
-var url = require("url")
-
-function fullUrl(req) {
-   return url.format({ protocol: req.protocol, host: req.get("host") })
-}
+const { fullUrl } = require("../config/helpers/helpers-func")
 
 /**
  * @route   ==> /api/auth

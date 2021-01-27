@@ -41,10 +41,10 @@ export default function SignUp() {
    // Formik
    const formik = useFormik({
       initialValues: {
-         username: "ertwwererter",
-         email: "johnDoe@exemple.com",
-         password: "11111111111111",
-         password2: "11111111111111",
+         username: "",
+         email: "",
+         password: "",
+         password2: "",
       },
       validationSchema: Yup.object({
          username: Yup.string().min(5, "Mininum 5 characters").max(15, "Maximum 15 characters").required("Required!"),
@@ -61,11 +61,12 @@ export default function SignUp() {
             const response = await axios.post("/api/auth/signup", values)
             /* 
             
-            Use Flash Later
+            Use Flash Later or redirect IDK
+
+             // Router.push(response.data.redirect)
 
             */
             console.log(response.data)
-            // Router.push(response.data.redirect)
 
             setLoading(false)
          } catch (error) {
@@ -165,7 +166,7 @@ export default function SignUp() {
                   )}
 
                   <motion.button type="submit" className="btn btn-primary">
-                     {loading && <img src="/lo.gif" />}b Sign Up
+                     {loading && <img src="/lo.gif" />}Sign Up
                   </motion.button>
                </form>
 

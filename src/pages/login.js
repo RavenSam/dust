@@ -34,12 +34,13 @@ const containerVariants = {
 
 export default function LogIn() {
    const [showPw, setShowPw] = useState(false)
+   const [loading, setLoading] = useState(false)
 
    // Formik
    const formik = useFormik({
       initialValues: {
-         email: "johnDoe@exemple.com",
-         password: "11111111111111",
+         email: "",
+         password: "",
       },
       validationSchema: Yup.object({
          email: Yup.string().email("Invalid email format").required("Required!"),
@@ -47,18 +48,19 @@ export default function LogIn() {
       }),
       onSubmit: async (values) => {
          try {
-            // setLoading(true)
+            setLoading(true)
 
             const response = await axios.post("/api/auth/login", values)
             /* 
             
-            Use Flash Later
+            Use Flash Later or redirect IDK
+
+             // Router.push("/user/dashboard")
 
             */
             console.log(response.data)
-            // Router.push(response.data.redirect)
 
-            // setLoading(false)
+            setLoading(false)
          } catch (error) {
             console.log(error)
          }
@@ -132,7 +134,9 @@ export default function LogIn() {
                      <Notification type="error" msg={formik.errors.password} />
                   )}
 
-                  <input type="submit" value="Sign Up" className="btn btn-primary" />
+                  <motion.button type="submit" className="btn btn-primary">
+                     {loading && <img src="/lo.gif" />}Login
+                  </motion.button>
                </form>
 
                <p>
