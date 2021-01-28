@@ -5,7 +5,7 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 
 // Components
-import { Header, Modal } from "../components"
+import { Header } from "../components"
 
 export default function DefaultLayout({ children }) {
    const [theme, setTheme] = useState("")
@@ -36,7 +36,6 @@ export default function DefaultLayout({ children }) {
          <ThemeContext.Provider value={value}>
             {showNav && <Header position="fixed" />}
 
-            <Modal />
             <div className="container">{children}</div>
          </ThemeContext.Provider>
       </>

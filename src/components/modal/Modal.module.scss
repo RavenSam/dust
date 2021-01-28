@@ -5,9 +5,11 @@
    bottom: 0;
    top: 0;
    background: rgba(0, 0, 0, 0.5);
-   backdrop-filter:blur(5px);
+   backdrop-filter: blur(5px);
    z-index: 100;
    padding: 1rem;
+   display: flex;
+   align-items: center;
 
    .card {
       position: relative;
@@ -20,20 +22,71 @@
       min-height: 200px;
       text-align: center;
       background: var(--color-cd);
-      padding: 1.5rem 1rem;
+
       border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
-      .dismiss {
-         position: absolute;
-         right: 1rem;
-         top: 0.8rem;
-         width: 20px;
-         height: 20px;
-         background: transparent;
-         border: none;
-         color: var(--color-text);
-         cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+
+      animation: pop 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+      .cardHeader {
+         padding: 0 1rem;
+         width: 100%;
+         height: 50px;
+         background-color: var(--color-primary);
+         display: flex;
+         align-items: center;
+
+         .headerLeft {
+            flex: 1;
+            text-align: left;
+         }
+
+         .dismiss {
+            width: 15px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            color: var(--color-text);
+            cursor: pointer;
+         }
       }
+
+      .cardBody {
+         min-height: 100px;
+         padding: 1.5rem 1rem;
+      }
+
+      .cardFooter {
+         padding: 0 1rem;
+         height: 60px;
+         display: flex;
+         align-items: center;
+         justify-content: flex-end;
+
+         @media (max-width: 430px) {
+            justify-content: center;
+         }
+
+         button {
+            margin: 0 0 0 1rem;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+         }
+      }
+   }
+}
+
+@keyframes pop {
+   0% {
+      transform: scale(0.5) translate(-50%, -50%);
+      opacity: 0;
+   }
+   100% {
+      transform: scale(1) translate(-50%, -50%);
+      opacity: 1;
    }
 }

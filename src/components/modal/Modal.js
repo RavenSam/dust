@@ -9,12 +9,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // Style
 import styles from "./Modal.module.scss"
 
-export default function Modal() {
+export default function Modal({ children, continueBtn }) {
    const { displayModal, setDisplayModal } = useContext(ThemeContext)
 
-   const dismissModal = () => setDisplayModal("none")
+   const actionModal = () => setDisplayModal(displayModal === "none" ? "block" : "none")
 
-   const customCSS = `body{ overflow:hidden; }`
+   const customCSS = `body,html{ overflow:hidden; }`
 
    return (
       <>
@@ -22,9 +22,27 @@ export default function Modal() {
 
          <div id="modal" className={styles.modal} style={{ display: displayModal }}>
             <div className={styles.card}>
-               <button className={styles.dismiss} onClick={dismissModal}>
-                  <FontAwesomeIcon icon={faTimes} />
-               </button>
+               <div className={styles.cardHeader}>
+                  <div className={styles.headerLeft}>
+                     <h3>Welcome</h3>
+                  </div>
+
+                  <button className={styles.dismiss} onClick={actionModal}>
+                     <FontAwesomeIcon icon={faTimes} />
+                  </button>
+               </div>
+
+               <div className={styles.cardBody}>{children}</div>
+
+               <div className={styles.cardFooter}>
+                  <button className="btn btn-secondary" onClick={actionModal}>
+                     Cancel
+                  </button>
+
+                  <button className="btn btn-primary" onClick={continueBtn}>
+                     Continue
+                  </button>
+               </div>
             </div>
          </div>
       </>
