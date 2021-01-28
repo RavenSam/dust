@@ -14,7 +14,7 @@ passport.use(
       },
       (accessToken, refreshToken, profile, done) => {
          // Passport callback
-         const { provider, displayName, id, emails, name, _json } = profile
+         const { provider, displayName, id, emails, name, photos } = profile
          const email = emails[0].value
 
          User.findOne({ email }).then((user) => {
@@ -27,7 +27,7 @@ passport.use(
                   name: `${name.familyName} ${name.givenName}`,
                   username: displayName,
                   email,
-                  thumbnail: _json.image.url,
+                  thumbnail: photos[0].value,
                   provider,
                   providerId: id,
                }

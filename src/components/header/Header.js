@@ -32,7 +32,7 @@ const containerVariants = {
  *  - type => the navbar type "light" | "dark" | "sticky"
  *  - type default => light
  */
-export default function Header({ type = "dark", position = "absolute" }) {
+export default function Header({ type = "light", position = "absolute", user }) {
    const [scrolled, setScrolled] = useState(false)
    const [menuOpen, setMenuOpen] = useState(false)
 

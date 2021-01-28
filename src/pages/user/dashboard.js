@@ -1,6 +1,6 @@
+import { useContext, useEffect } from "react"
 import Head from "next/head"
-import Router from "next/router"
-import { useEffect } from "react"
+import ThemeContext from "../../contexts/GlobalContexts"
 import { motion } from "framer-motion"
 
 // Animation Options
@@ -18,7 +18,15 @@ const containerVariants = {
    },
 }
 
-export default function Dashboard() {
+export default function Dashboard(props) {
+   // const { user, setUser } = useContext(ThemeContext)
+
+   // useEffect(() => {
+   //    localStorage.setItem("User", JSON.stringify(props.user))
+
+   //    setUser(props.user)
+   // }, [])
+
    return (
       <>
          <Head>
@@ -34,13 +42,13 @@ export default function Dashboard() {
             exit="exit"
          >
             <h1>Dashboard</h1>
+            {/* <h2>My name is {user.name}</h2> */}
          </motion.div>
       </>
    )
 }
 
-// Dashboard.getInitialProps = async (ctx) => {
-//    let user = JSON.stringify(ctx.req.user) || null
-
-//    return { user }
-// }
+Dashboard.getInitialProps = async ({ req }) => {
+   const user = req.user || null
+   return { user }
+}

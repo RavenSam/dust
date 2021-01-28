@@ -18,7 +18,7 @@ const containerVariants = {
    },
 }
 
-export default function Home() {
+export default function Home(props) {
    return (
       <>
          <Head>
