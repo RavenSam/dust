@@ -34,7 +34,7 @@ export default function DefaultLayout({ children }) {
          </Head>
 
          <ThemeContext.Provider value={value}>
-            {showNav && <Header position="sticky" />}
+            {showNav && <Header position="fixed" />}
 
             <Modal />
             <div className="container">{children}</div>

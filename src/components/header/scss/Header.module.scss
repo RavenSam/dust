@@ -1,0 +1,181 @@
+$dark: #333;
+$light: #ffffff;
+
+@import "burger";
+@import "media";
+
+// *************************************************************************************
+// *************************************************************************************
+//      Header
+// *************************************************************************************
+// *************************************************************************************
+
+.header {
+   top: 0;
+   left: 0;
+   height: 90px;
+   width: 100%;
+   transition: 0.5s ease;
+   z-index: 10;
+
+   .navContainer {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      transition: 0.5s ease;
+
+      .logo {
+         flex: 1;
+
+         svg {
+            width: 90px;
+            path {
+               fill: #fff;
+            }
+         }
+      }
+
+      .links {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         a:hover,
+         .current {
+            color: var(--color-primary);
+         }
+
+         li a {
+            font-size: 0.9rem;
+            padding: 0.8rem;
+
+            &.current,
+            &:hover {
+               color: var(--color-primary) !important;
+            }
+         }
+
+         .btnLs {
+            display: flex;
+            align-items: center;
+
+            button {
+               margin: 0 0.8rem;
+            }
+
+            .themeSwitcher {
+               background: transparent;
+               border: none;
+               font-size: 1.2rem;
+               display: block;
+               cursor: pointer;
+
+               svg {
+                  width: 25px;
+                  display: block;
+               }
+            }
+         }
+      }
+   }
+}
+
+// *************************************************************************************
+// *************************************************************************************
+//      LIGHT NAV
+// *************************************************************************************
+// *************************************************************************************
+
+.light.header {
+   // position: fixed;
+   background: $light;
+   padding: 0;
+   height: 70px;
+   -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+   -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+   .links {
+      li a {
+         color: $dark;
+      }
+
+      .themeSwitcher {
+         color: $dark;
+      }
+   }
+}
+
+// *************************************************************************************
+// *************************************************************************************
+//      DARK NAV
+// *************************************************************************************
+// *************************************************************************************
+
+.dark.header {
+   position: absolute;
+   background: #1f1d2b;
+   padding: 0;
+   height: 70px;
+   -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+   -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+   .links {
+      li a {
+         color: $light;
+      }
+
+      .themeSwitcher {
+         color: $light;
+      }
+   }
+}
+
+// *************************************************************************************
+// *************************************************************************************
+//      STICKY NAV
+// *************************************************************************************
+// *************************************************************************************
+
+.sticky.header {
+   position: fixed !important;
+
+   .links {
+      li a {
+         color: var(--color-text);
+      }
+
+      .themeSwitcher {
+         color: var(--color-text);
+      }
+   }
+
+   //On scroll
+   &.scroll {
+      background: #ffffff;
+      padding: 0;
+      height: 70px;
+      -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+      -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+
+      .navContainer {
+         width: 90%;
+
+         .logo {
+            svg path {
+               fill: #000;
+            }
+         }
+
+         .links {
+            li a {
+               color: $dark;
+            }
+
+            .themeSwitcher {
+               color: $dark;
+            }
+         }
+      }
+   }
+}

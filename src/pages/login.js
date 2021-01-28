@@ -55,7 +55,7 @@ export default function LogIn() {
             
             Use Flash Later or redirect IDK
 
-             // Router.push("/user/dashboard")
+             // router.push("/user/dashboard")
 
             */
             console.log(response.data)

@@ -8,7 +8,7 @@ import ThemeSwitcher from "../themeSwither/ThemeSwitcher"
 import { ButtonModal } from "../modal/Modal"
 
 // StyleSheets
-import styles from "./Header.module.scss"
+import styles from "./scss/Header.module.scss"
 
 // Animation Options
 const containerVariants = {
@@ -28,14 +28,22 @@ const containerVariants = {
    },
 }
 
-export default function Header({ position }) {
+/**
+ *
+ * @param {{type:<string> "light" | "dark" | "sticky"}}
+ *  - type => the navbar type
+ *  - type default => light
+ */
+export default function Header({ type = "sticky", position = "absolute" }) {
    const [scrolled, setScrolled] = useState(false)
    const [menuOpen, setMenuOpen] = useState(false)
 
    const router = useRouter()
 
    useEffect(() => {
-      window.addEventListener("scroll", () => (window.scrollY > 50 ? setScrolled(true) : setScrolled(false)))
+      const onScroll = (e) => (window.scrollY > 50 ? setScrolled(true) : setScrolled(false))
+
+      window.addEventListener("scroll", onScroll)
    }, [scrolled])
 
    const links = [
@@ -46,15 +54,17 @@ export default function Header({ position }) {
       { name: "Logout", href: "/api/auth/logout" },
    ]
 
+   const headerClasses = (type) => {
+      return `${styles.header} ${styles[type]} ${type === "sticky" && scrolled && styles.scroll}`
+   }
    return (
       <motion.header
+         style={type !== "sticky" && { position }}
          variants={containerVariants}
          initial="hidden"
          animate="visible"
          exit="exit"
-         className={`${styles.header} ${position === "sticky" && styles.sticky} ${
-            position === "sticky" && scrolled && styles.scroll
-         }`}
+         className={headerClasses(type)}
       >
          <div className={` container ${styles.navContainer}`}>
             <div className={styles.logo}>

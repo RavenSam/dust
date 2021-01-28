@@ -1,7 +1,6 @@
 import { useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
-import Router from "next/router"
 import { useFormik } from "formik"
 import { motion } from "framer-motion"
 import * as Yup from "yup"
@@ -63,7 +62,7 @@ export default function SignUp() {
             
             Use Flash Later or redirect IDK
 
-             // Router.push(response.data.redirect)
+             // router.push(response.data.redirect)
 
             */
             console.log(response.data)

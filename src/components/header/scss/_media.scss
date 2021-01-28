@@ -1,0 +1,68 @@
+// *************************************************************************************
+// *************************************************************************************
+//      MEDIA
+// *************************************************************************************
+// *************************************************************************************
+
+@media screen and (max-width: 768px) {
+   header {
+      .navContainer {
+         .burger {
+            display: block;
+         }
+
+         .links {
+            position: absolute;
+            flex-direction: column;
+            background-color: var(--color-cd);
+            width: 60%;
+            height: 100vh;
+            top: 0;
+            right: 0;
+            bottom: 0;
+
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.4s ease-in-out;
+
+            li {
+               width: 100%;
+
+               a {
+                  display: block;
+                  background: var(--color-in);
+                  width: 100%;
+                  margin: 1px 0;
+                  color: var(--color-text) !important;
+                  border-left: 4px solid transparent;
+
+                  &:hover,
+                  &.current {
+                     border-left-color: var(--color-primary);
+                     background: var(--color-bg);
+                  }
+               }
+            }
+
+            .btnLs {
+               width: 100%;
+               padding: 0.8rem 0;
+               justify-content: center;
+
+               .themeSwitcher {
+                  color: var(--color-text);
+               }
+            }
+         }
+
+         .links.open {
+            opacity: 1;
+            transform: translateX(0);
+         }
+
+         .burger {
+            display: flex;
+         }
+      }
+   }
+}

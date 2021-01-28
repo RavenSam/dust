@@ -8,6 +8,8 @@ body {
    color: var(--color-text);
 
    transition: background 1s;
+
+   overflow-x: hidden;
 }
 
 p {
@@ -66,8 +68,12 @@ input:focus {
    width: 80%;
    margin: 0 auto;
 
+   @media screen and (max-width: 950px) {
+      width: 90%;
+      padding: 0 1rem;
+   }
+
    @media screen and (max-width: 650px) {
-      // width: 90% !important;
       width: 100% !important;
       padding: 0 1rem;
    }
