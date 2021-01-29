@@ -5,7 +5,6 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 import { motion } from "framer-motion"
 import axios from "axios"
-import Notification from "../components/notification/Notification"
 import UserProfile from "../utils/user_profile"
 
 // get our fontawesome imports
@@ -40,8 +39,8 @@ export default function LogIn() {
    // Formik
    const formik = useFormik({
       initialValues: {
-         email: "johndoe@exemple.com",
-         password: "111111111111111",
+         email: "",
+         password: "",
       },
       validationSchema: Yup.object({
          email: Yup.string().email("Invalid email format").required("Required!"),
@@ -116,9 +115,7 @@ export default function LogIn() {
 
                      <FontAwesomeIcon icon={faEnvelope} />
                   </div>
-                  {formik.errors.email && formik.touched.email && (
-                     <Notification type="error" msg={formik.errors.email} />
-                  )}
+                  {formik.errors.email && formik.touched.email && <p className={styles.error}>{formik.errors.email}</p>}
 
                   <div className={styles.input}>
                      <input
@@ -133,7 +130,7 @@ export default function LogIn() {
                      <FontAwesomeIcon icon={showPw ? faEye : faEyeSlash} onClick={() => setShowPw(!showPw)} />
                   </div>
                   {formik.errors.password && formik.touched.password && (
-                     <Notification type="error" msg={formik.errors.password} />
+                     <p className={styles.error}>{formik.errors.password}</p>
                   )}
 
                   <motion.button type="submit" className="btn btn-primary">

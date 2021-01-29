@@ -122,7 +122,7 @@ export default function SignUp() {
                      <FontAwesomeIcon icon={faUser} />
                   </div>
                   {formik.errors.username && formik.touched.username && (
-                     <Notification type="error" msg={formik.errors.username} />
+                     <p className={styles.error}>{formik.errors.username}</p>
                   )}
 
                   <div className={styles.input}>
@@ -136,9 +136,7 @@ export default function SignUp() {
                      />
                      <FontAwesomeIcon icon={faEnvelope} />
                   </div>
-                  {formik.errors.email && formik.touched.email && (
-                     <Notification type="error" msg={formik.errors.email} />
-                  )}
+                  {formik.errors.email && formik.touched.email && <p className={styles.error}>{formik.errors.email}</p>}
                   <div className={styles.input}>
                      <input
                         type={showPw ? "text" : "password"}
@@ -151,7 +149,7 @@ export default function SignUp() {
                      <FontAwesomeIcon icon={showPw ? faEye : faEyeSlash} onClick={() => setShowPw(!showPw)} />
                   </div>
                   {formik.errors.password && formik.touched.password && (
-                     <Notification type="error" msg={formik.errors.password} />
+                     <p className={styles.error}>{formik.errors.password}</p>
                   )}
                   <div className={styles.input}>
                      <input
@@ -164,7 +162,7 @@ export default function SignUp() {
                      <FontAwesomeIcon icon={showPw2 ? faEye : faEyeSlash} onClick={() => setShowPw2(!showPw2)} />
                   </div>
                   {formik.errors.password2 && formik.touched.password2 && (
-                     <Notification type="error" msg={formik.errors.password2} />
+                     <p className={styles.error}>{formik.errors.password2}</p>
                   )}
 
                   <motion.button type="submit" className="btn btn-primary">
