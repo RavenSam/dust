@@ -1,5 +1,7 @@
+import { useEffect } from "react"
 import Head from "next/head"
 import { motion } from "framer-motion"
+import UserProfile from "../utils/user_profile"
 
 import styles from "../styles/Home.module.scss"
 

@@ -6,6 +6,7 @@ import * as Yup from "yup"
 import { motion } from "framer-motion"
 import axios from "axios"
 import Notification from "../components/notification/Notification"
+import UserProfile from "../utils/user_profile"
 
 // get our fontawesome imports
 import { faEye, faEnvelope, faUser, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
@@ -39,8 +40,8 @@ export default function LogIn() {
    // Formik
    const formik = useFormik({
       initialValues: {
-         email: "",
-         password: "",
+         email: "johndoe@exemple.com",
+         password: "111111111111111",
       },
       validationSchema: Yup.object({
          email: Yup.string().email("Invalid email format").required("Required!"),
@@ -58,6 +59,7 @@ export default function LogIn() {
              // router.push("/user/dashboard")
 
             */
+            UserProfile.setUser(response.data.user)
             console.log(response.data)
 
             setLoading(false)

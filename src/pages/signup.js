@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import * as Yup from "yup"
 import axios from "axios"
 import Notification from "../components/notification/Notification"
+import UserProfile from "../utils/user_profile"
 
 // get our fontawesome imports
 import { faEye, faEnvelope, faUser, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
@@ -65,6 +66,8 @@ export default function SignUp() {
              // router.push(response.data.redirect)
 
             */
+
+            // UserProfile.setUser(response.data.user)
             console.log(response.data)
 
             setLoading(false)

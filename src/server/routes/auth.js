@@ -62,7 +62,7 @@ router.post("/signup", (req, res) => {
  * @description User Authentication (log in) with email using passport
  */
 router.post("/login", passport.authenticate("local", { failureRedirect: "/login" }), (req, res) => {
-   res.send("log in")
+   res.json({ user: req.user })
 })
 
 /** ********************************************************************

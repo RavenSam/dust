@@ -1,7 +1,7 @@
-import { useContext, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import Head from "next/head"
-import ThemeContext from "../../contexts/GlobalContexts"
 import { motion } from "framer-motion"
+import userProfile from "../../utils/user_profile"
 
 // Animation Options
 const containerVariants = {
@@ -19,13 +19,7 @@ const containerVariants = {
 }
 
 export default function Dashboard(props) {
-   // const { user, setUser } = useContext(ThemeContext)
-
-   // useEffect(() => {
-   //    localStorage.setItem("User", JSON.stringify(props.user))
-
-   //    setUser(props.user)
-   // }, [])
+   const getUser = () => userProfile.getUser() || "Loading..."
 
    return (
       <>
@@ -42,13 +36,8 @@ export default function Dashboard(props) {
             exit="exit"
          >
             <h1>Dashboard</h1>
-            {/* <h2>My name is {user.name}</h2> */}
+            <h2>My name is {getUser().username}</h2>
          </motion.div>
       </>
    )
-}
-
-Dashboard.getInitialProps = async ({ req }) => {
-   const user = req.user || null
-   return { user }
 }

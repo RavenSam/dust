@@ -26,6 +26,7 @@ app.prepare().then(() => {
    const optionsDB = { useUnifiedTopology: true, useNewUrlParser: true }
    mongoose.connect(process.env.CONNECT_DB, optionsDB, () => console.log(`> Connected to the DataBase...`))
 
+
    // set up session cookies
    server.use(
       cookieSession({

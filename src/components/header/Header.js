@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react"
-import Link from "next/link"
-import Head from "next/head"
-import { useRouter } from "next/router"
 import { motion } from "framer-motion"
-import ThemeSwitcher from "../themeSwither/ThemeSwitcher"
+import NavLinks from "./NavLinks"
+import userProfile from "../../utils/user_profile"
 
 // StyleSheets
 import styles from "./scss/Header.module.scss"
@@ -32,11 +30,8 @@ const containerVariants = {
  *  - type => the navbar type "light" | "dark" | "sticky"
  *  - type default => light
  */
-export default function Header({ type = "light", position = "absolute", user }) {
+export default function Header({ type = "light", position = "absolute" }) {
    const [scrolled, setScrolled] = useState(false)
-   const [menuOpen, setMenuOpen] = useState(false)
-
-   const router = useRouter()
 
    useEffect(() => {
       const onScroll = (e) => (window.scrollY > 50 ? setScrolled(true) : setScrolled(false))
@@ -44,24 +39,12 @@ export default function Header({ type = "light", position = "absolute", user }) 
       window.addEventListener("scroll", onScroll)
    }, [scrolled])
 
-   const links = [
-      { name: "Home", href: "/" },
-      { name: "Sign Up", href: "/signup" },
-      { name: "Login", href: "/login" },
-      { name: "Dashboard", href: "/user/dashboard" },
-      { name: "Logout", href: "/api/auth/logout" },
-   ]
-
    const headerClasses = (type) => {
       return `${styles.header} ${styles[type]} ${type === "sticky" && scrolled && styles.scroll}`
    }
 
-   const customCSS = `@media (max-width: 768px) {html{ overflow:hidden; }}`
-
    return (
       <>
-         <Head>{menuOpen && <style>{customCSS}</style>}</Head>
-
          <motion.header
             style={type !== "sticky" && { position }}
             variants={containerVariants}
@@ -82,25 +65,7 @@ export default function Header({ type = "light", position = "absolute", user }) 
                   </a>
                </div>
 
-               <ul className={`${styles.links} ${menuOpen && styles.open}`}>
-                  {links.map((link) => (
-                     <li key={link.name}>
-                        <Link href={link.href}>
-                           <a className={router.pathname === link.href ? styles.current : undefined}>{link.name}</a>
-                        </Link>
-                     </li>
-                  ))}
-
-                  <div className={styles.btnLs}>
-                     <ThemeSwitcher styles={styles} />
-                  </div>
-               </ul>
-
-               <div onClick={() => setMenuOpen(!menuOpen)} className={`${styles.burger} ${menuOpen && styles.open}`}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-               </div>
+               <NavLinks styles={styles} user={userProfile.getUser()} />
             </div>
          </motion.header>
       </>

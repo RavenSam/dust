@@ -24,7 +24,7 @@ passport.use(
             } else {
                // If User With THAT email Do Not Exist
                const newUser = {
-                  name: `${name.familyName} ${name.givenName}`,
+                  full_name: `${name.familyName} ${name.givenName}`,
                   username: displayName,
                   email,
                   thumbnail: photos[0].value,
