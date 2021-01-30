@@ -37,18 +37,17 @@ export default function NavLinks({ user, styles }) {
          <ul className={`${styles.links} ${menuOpen && styles.open}`}>
             {pagesLinks.map((link) => lis(link))}
 
-            {user &&
-               userLinks.map((link) => (
-                  <>
-                     {lis(link)}
+            {user && (
+               <>
+                  {userLinks.map((link) => lis(link))}
 
-                     <li>
-                        <Link href="/api/auth/logout">
-                           <a onClick={UserProfile.userLogout}>Logout</a>
-                        </Link>
-                     </li>
-                  </>
-               ))}
+                  <li>
+                     <Link href="/api/auth/logout">
+                        <a onClick={UserProfile.userLogout}>Logout</a>
+                     </Link>
+                  </li>
+               </>
+            )}
 
             {!user && guestLinks.map((link) => lis(link))}
 

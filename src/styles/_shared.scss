@@ -1,0 +1,42 @@
+// ===================================================
+// ===================================================
+//  FLASH SHARED COMPONENT
+// ===================================================
+// ===================================================
+
+.alert {
+   display: flex;
+   align-items: center;
+   width: 90%;
+   max-width: 380px;
+   padding: 0.8rem 1rem;
+
+   border-radius: 10px;
+   z-index: 1111;
+   position: absolute;
+   top: 50px;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+   .close {
+      color: white;
+      cursor: pointer;
+      margin-right: 10px;
+   }
+
+   p {
+      flex: 1;
+      margin: 0;
+      color: #fff;
+      letter-spacing: 1.5px;
+      font-size: 13px;
+   }
+}
+
+.alert-error {
+   background: #b11248;
+}
+.alert-success {
+   background: #0eb90e;
+}

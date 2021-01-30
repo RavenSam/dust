@@ -24,11 +24,11 @@ router.post("/signup", (req, res) => {
 
    User.findOne({ email }).then((user) => {
       if (user) {
-         // User exist
-         errors.push({ msg: "Email already registered" })
-
-         // TRY USE FLASH
-         res.json({ errors, status: "Account already exist" })
+         if (user.provider === "local") {
+            res.json({ errors, msg: "Email already registered Please Login", redirectTo: "/login" })
+         } else {
+            res.json({ errors, msg: `You Have Already Registered Using ${user.provider}` })
+         }
       } else {
          const newUser = new User({ username, email, password, thumbnail, provider: "local" })
 
@@ -42,11 +42,7 @@ router.post("/signup", (req, res) => {
                newUser
                   .save()
                   .then((user) => {
-                     // req.flash("success_msg", "You ara now registered and can Login")
-                     console.log(user)
-
-                     // TRY USE FLASH
-                     res.json({ errors, status: "You Have Successfuly Registred", user })
+                     res.json({ errors, msg: "You Have Successfuly Registred", user, redirectTo: "/user/dashboard" })
                   })
                   .catch((err) => console.log(err))
             })
@@ -61,8 +57,12 @@ router.post("/signup", (req, res) => {
  * @route   ==> /api/auth/login
  * @description User Authentication (log in) with email using passport
  */
-router.post("/login", passport.authenticate("local", { failureRedirect: "/login" }), (req, res) => {
-   res.json({ user: req.user })
+router.post("/login", passport.authenticate("local"), (req, res) => {
+   res.json({
+      user: req.user,
+      msg: "You have Succesfuly Logged In",
+      redirectTo: "/user/dashboard",
+   })
 })
 
 /** ********************************************************************

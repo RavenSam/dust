@@ -1,16 +1,18 @@
-import { createContext } from "react"
+import { createContext, useState, useEffect } from "react"
+import userProfile from "../utils/user_profile"
+import themeMode from "../utils/theme_mode"
 
-const ThemeContext = createContext({
-   // User Login or Not
-   user: null,
+const GlobalContexts = createContext()
 
-   // for The Dark/Laught Theme
-   theme: "",
-   setTheme: () => {},
+export const GlobalContextProvider = (props) => {
+   const [theme, setTheme] = useState("")
+   const [user, setUser] = useState(null)
 
-   // To Display Modal
-   displayModal: "none",
-   setDisplayModal: () => {},
-})
+   useEffect(() => setTheme(themeMode.getMode()), [theme])
 
-export default ThemeContext
+   useEffect(() => setUser(userProfile.getUser()), [])
+
+   return <GlobalContexts.Provider value={{ theme, setTheme, user }}>{props.children}</GlobalContexts.Provider>
+}
+
+export default GlobalContexts

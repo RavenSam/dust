@@ -1,17 +1,10 @@
 import Head from "next/head"
-import { useContext } from "react"
-import ThemeContext from "../../contexts/GlobalContexts"
-
-// get out fontawesome imports
-import { faTimes } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import * as Icons from "heroicons-react"
 
 // Style
 import styles from "./Modal.module.scss"
 
 export default function Modal({ children, continueBtn }) {
-   const { displayModal, setDisplayModal } = useContext(ThemeContext)
-
    const actionModal = () => setDisplayModal(displayModal === "none" ? "block" : "none")
 
    const customCSS = `body,html{ overflow:hidden; }`
@@ -28,7 +21,7 @@ export default function Modal({ children, continueBtn }) {
                   </div>
 
                   <button className={styles.dismiss} onClick={actionModal}>
-                     <FontAwesomeIcon icon={faTimes} />
+                     <Icons.X />
                   </button>
                </div>
 

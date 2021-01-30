@@ -1,15 +1,14 @@
 import { useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { motion } from "framer-motion"
 import axios from "axios"
 import UserProfile from "../utils/user_profile"
-
-// get our fontawesome imports
-import { faEye, faEnvelope, faUser, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import * as Icons from "heroicons-react"
+import BackButton from "../components/shared/BackButton"
 
 // StyleSheets
 import styles from "../styles/Sign.module.scss"
@@ -36,11 +35,13 @@ export default function LogIn() {
    const [showPw, setShowPw] = useState(false)
    const [loading, setLoading] = useState(false)
 
+   const router = useRouter()
+
    // Formik
    const formik = useFormik({
       initialValues: {
-         email: "",
-         password: "",
+         email: "saradow@gmail.com",
+         password: "12345678",
       },
       validationSchema: Yup.object({
          email: Yup.string().email("Invalid email format").required("Required!"),
@@ -51,19 +52,26 @@ export default function LogIn() {
             setLoading(true)
 
             const response = await axios.post("/api/auth/login", values)
-            /* 
-            
-            Use Flash Later or redirect IDK
-
-             // router.push("/user/dashboard")
-
-            */
-            UserProfile.setUser(response.data.user)
-            console.log(response.data)
 
             setLoading(false)
+
+            if (response.data.user) {
+               UserProfile.setUser(response.data.user)
+
+               window.flash(response.data.msg)
+               console.log(response.data.user)
+               router.replace(response.data.redirectTo)
+            } else {
+               window.flash("You have entered an invalid username or password", "error")
+            }
          } catch (error) {
-            console.log(error)
+            setLoading(false)
+            if (error.response.data === "Unauthorized") {
+               window.flash("You have entered an invalid email or password", "error")
+            } else {
+               window.flash("Something went wrong", "error")
+               console.log(error)
+            }
          }
       },
    })
@@ -77,12 +85,16 @@ export default function LogIn() {
          <div className={styles.logIn}>
             <motion.div
                className={styles.card}
-               exit="exit"
                variants={containerVariants}
                initial="hidden"
                animate="visible"
+               exit="exit"
             >
-               <h3 className={styles.cardTitle}>Welcome Back</h3>
+               <div className={styles.cardHeader}>
+                  <BackButton />
+
+                  <h3 className={styles.cardTitle}>Welcome Back</h3>
+               </div>
 
                <h4 className={styles.cardSubTitle}>Log In With</h4>
 
@@ -113,7 +125,7 @@ export default function LogIn() {
                         onChange={formik.handleChange}
                      />
 
-                     <FontAwesomeIcon icon={faEnvelope} />
+                     <Icons.MailOutline />
                   </div>
                   {formik.errors.email && formik.touched.email && <p className={styles.error}>{formik.errors.email}</p>}
 
@@ -127,7 +139,11 @@ export default function LogIn() {
                         onChange={formik.handleChange}
                      />
 
-                     <FontAwesomeIcon icon={showPw ? faEye : faEyeSlash} onClick={() => setShowPw(!showPw)} />
+                     {showPw ? (
+                        <Icons.EyeOutline onClick={() => setShowPw(!showPw)} />
+                     ) : (
+                        <Icons.EyeOffOutline onClick={() => setShowPw(!showPw)} />
+                     )}
                   </div>
                   {formik.errors.password && formik.touched.password && (
                      <p className={styles.error}>{formik.errors.password}</p>

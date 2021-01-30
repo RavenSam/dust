@@ -19,7 +19,19 @@ const containerVariants = {
 }
 
 export default function Dashboard(props) {
-   const getUser = () => userProfile.getUser() || "Loading..."
+   const { setUser, getUser } = userProfile
+
+   const user = JSON.parse(props.user)
+
+   useEffect(() => {
+      if (user) {
+         setUser(user)
+      }
+   }, [getUser(), props.user])
+
+   if (!getUser()) {
+      return <h1 style={{ paddingTop: "7rem" }}>Loading...</h1>
+   }
 
    return (
       <>
@@ -40,4 +52,9 @@ export default function Dashboard(props) {
          </motion.div>
       </>
    )
+}
+
+Dashboard.getInitialProps = async ({ req }) => {
+   const user = req ? JSON.stringify(req.user) : null
+   return { user }
 }

@@ -1,16 +1,13 @@
 import { useState } from "react"
 import Head from "next/head"
+import { useRouter } from "next/router"
 import Link from "next/link"
 import { useFormik } from "formik"
 import { motion } from "framer-motion"
 import * as Yup from "yup"
 import axios from "axios"
-import Notification from "../components/notification/Notification"
-import UserProfile from "../utils/user_profile"
-
-// get our fontawesome imports
-import { faEye, faEnvelope, faUser, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import * as Icons from "heroicons-react"
+import BackButton from "../components/shared/BackButton"
 
 // StyleSheets
 import styles from "../styles/Sign.module.scss"
@@ -38,13 +35,15 @@ export default function SignUp() {
    const [showPw2, setShowPw2] = useState(false)
    const [loading, setLoading] = useState(false)
 
+   const router = useRouter()
+
    // Formik
    const formik = useFormik({
       initialValues: {
-         username: "",
-         email: "",
-         password: "",
-         password2: "",
+         username: "saradow",
+         email: "saradow@gmail.com",
+         password: "12345678",
+         password2: "12345678",
       },
       validationSchema: Yup.object({
          username: Yup.string().min(5, "Mininum 5 characters").max(15, "Maximum 15 characters").required("Required!"),
@@ -59,20 +58,21 @@ export default function SignUp() {
             setLoading(true)
 
             const response = await axios.post("/api/auth/signup", values)
-            /* 
-            
-            Use Flash Later or redirect IDK
-
-             // router.push(response.data.redirect)
-
-            */
-
-            // UserProfile.setUser(response.data.user)
-            console.log(response.data)
 
             setLoading(false)
+
+            console.log(response.data)
+
+            if (response.data.user) {
+               window.flash(response.data.msg)
+
+               router.replace(response.data.redirectTo)
+            } else {
+               window.flash(response.data.msg, "error")
+            }
          } catch (error) {
             console.log(error)
+            window.flash("Something went wrong", "error")
          }
       },
    })
@@ -91,7 +91,11 @@ export default function SignUp() {
                animate="visible"
                exit="exit"
             >
-               <h3 className={styles.cardTitle}>Sign up With</h3>
+               <div className={styles.cardHeader}>
+                  <BackButton />
+
+                  <h3 className={styles.cardTitle}>Sign up With</h3>
+               </div>
 
                <div className={styles.socialBtn}>
                   <a href="/api/auth/google">
@@ -119,7 +123,7 @@ export default function SignUp() {
                         value={formik.values.username}
                         onChange={formik.handleChange}
                      />
-                     <FontAwesomeIcon icon={faUser} />
+                     <Icons.UserOutline />
                   </div>
                   {formik.errors.username && formik.touched.username && (
                      <p className={styles.error}>{formik.errors.username}</p>
@@ -134,7 +138,7 @@ export default function SignUp() {
                         value={formik.values.email}
                         onChange={formik.handleChange}
                      />
-                     <FontAwesomeIcon icon={faEnvelope} />
+                     <Icons.MailOutline />
                   </div>
                   {formik.errors.email && formik.touched.email && <p className={styles.error}>{formik.errors.email}</p>}
                   <div className={styles.input}>
@@ -146,7 +150,11 @@ export default function SignUp() {
                         onChange={formik.handleChange}
                      />
 
-                     <FontAwesomeIcon icon={showPw ? faEye : faEyeSlash} onClick={() => setShowPw(!showPw)} />
+                     {showPw ? (
+                        <Icons.EyeOutline onClick={() => setShowPw(!showPw)} />
+                     ) : (
+                        <Icons.EyeOffOutline onClick={() => setShowPw(!showPw)} />
+                     )}
                   </div>
                   {formik.errors.password && formik.touched.password && (
                      <p className={styles.error}>{formik.errors.password}</p>
@@ -159,7 +167,11 @@ export default function SignUp() {
                         value={formik.values.password2}
                         onChange={formik.handleChange}
                      />
-                     <FontAwesomeIcon icon={showPw2 ? faEye : faEyeSlash} onClick={() => setShowPw2(!showPw2)} />
+                     {showPw2 ? (
+                        <Icons.EyeOutline onClick={() => setShowPw2(!showPw2)} />
+                     ) : (
+                        <Icons.EyeOffOutline onClick={() => setShowPw2(!showPw2)} />
+                     )}
                   </div>
                   {formik.errors.password2 && formik.touched.password2 && (
                      <p className={styles.error}>{formik.errors.password2}</p>

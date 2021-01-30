@@ -1,4 +1,5 @@
 import { AnimatePresence } from "framer-motion" // For Animation
+import { GlobalContextProvider } from "../contexts/GlobalContexts"
 
 // Stylesheets
 import "../styles/global.scss"
@@ -11,11 +12,13 @@ export default function MyApp({ Component, pageProps, router }) {
 
    return (
       <>
-         <AnimatePresence exitBeforeEnter>
-            <Layout key={router.route}>
-               <Component {...pageProps} />
-            </Layout>
-         </AnimatePresence>
+         <GlobalContextProvider>
+            <AnimatePresence exitBeforeEnter>
+               <Layout key={router.route}>
+                  <Component {...pageProps} />
+               </Layout>
+            </AnimatePresence>
+         </GlobalContextProvider>
       </>
    )
 }
