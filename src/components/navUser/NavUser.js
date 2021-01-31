@@ -7,20 +7,22 @@ import styles from "./NavUser.module.scss"
 export default function NavUser() {
    const { user } = useContext(GlobalContexts)
 
-   if (!user) {
-      return <>...</>
-   }
+   // if (!user) {
+   //    return <>...</>
+   // }
 
    return (
       <>
          <div className={`${styles.NavUser} navbar`}>
             <ul>
-               <li className={styles.logo}>
-                  <a href="#">
-                     <img src={user.thumbnail} alt="" />
-                     <span>{user.username}</span>
-                  </a>
-               </li>
+               {user && (
+                  <li className={styles.logo}>
+                     <a href="#">
+                        <img src={user.thumbnail} alt="" />
+                        <span>{user.username}</span>
+                     </a>
+                  </li>
+               )}
 
                <li className={styles.navItem}>
                   <a href="#">

@@ -25,6 +25,7 @@ export default function Dashboard(props) {
    const { user } = useContext(GlobalContexts)
 
    const propUser = JSON.parse(props.user)
+   console.log(props.user)
 
    useEffect(() => {
       if (propUser) {
