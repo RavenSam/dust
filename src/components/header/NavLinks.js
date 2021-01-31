@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import UserProfile from "../../utils/user_profile"
 
-import ThemeSwitcher from "../themeSwither/ThemeSwitcher"
+import ThemeSwitcher from "../shared/ThemeSwitcher"
 
 const pagesLinks = [{ name: "Home", href: "/" }]
 

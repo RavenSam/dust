@@ -2,6 +2,9 @@ import { useState, useEffect, useContext } from "react"
 import Head from "next/head"
 import { motion } from "framer-motion"
 import userProfile from "../../utils/user_profile"
+import GlobalContexts from "../../contexts/GlobalContexts"
+
+import styles from "../../styles/user/Dashboard.module.scss"
 
 // Animation Options
 const containerVariants = {
@@ -19,18 +22,18 @@ const containerVariants = {
 }
 
 export default function Dashboard(props) {
-   const { setUser, getUser } = userProfile
+   const { user } = useContext(GlobalContexts)
 
-   const user = JSON.parse(props.user)
+   const propUser = JSON.parse(props.user)
 
    useEffect(() => {
-      if (user) {
-         setUser(user)
+      if (propUser) {
+         userProfile.setUser(propUser)
       }
-   }, [getUser(), props.user])
+   }, [userProfile.getUser(), props.user])
 
-   if (!getUser()) {
-      return <h1 style={{ paddingTop: "7rem" }}>Loading...</h1>
+   if (!user) {
+      return <h1>Loading...</h1>
    }
 
    return (
@@ -40,15 +43,66 @@ export default function Dashboard(props) {
          </Head>
 
          <motion.div
-            className=""
-            style={{ paddingTop: "7rem" }}
+            className={styles.dashboard}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
          >
-            <h1>Dashboard</h1>
-            <h2>My name is {getUser().username}</h2>
+            <main>
+               <h1>Hello Iam {user.username}</h1>
+
+               <div className="text">
+                  <p>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum vitae, tempora nihil ea, a ab
+                     molestiae earum unde laudantium ex similique error saepe reprehenderit culpa distinctio, est
+                     expedita quasi quisquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit perspiciatis
+                     esse amet, consequuntur non laboriosam voluptatibus. Eos officia sed fugiat odit aut aspernatur
+                     voluptates quibusdam, rerum cum necessitatibus eaque fugit, praesentium quam consectetur quis
+                     repellendus saepe totam vitae recusandae ad.
+                  </p>
+                  <p>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum vitae, tempora nihil ea, a ab
+                     molestiae earum unde laudantium ex similique error saepe reprehenderit culpa distinctio, est
+                     expedita quasi quisquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit perspiciatis
+                     esse amet, consequuntur non laboriosam voluptatibus. Eos officia sed fugiat odit aut aspernatur
+                     voluptates quibusdam, rerum cum necessitatibus eaque fugit, praesentium quam consectetur quis
+                     repellendus saepe totam vitae recusandae ad.
+                  </p>
+                  <p>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum vitae, tempora nihil ea, a ab
+                     molestiae earum unde laudantium ex similique error saepe reprehenderit culpa distinctio, est
+                     expedita quasi quisquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit perspiciatis
+                     esse amet, consequuntur non laboriosam voluptatibus. Eos officia sed fugiat odit aut aspernatur
+                     voluptates quibusdam, rerum cum necessitatibus eaque fugit, praesentium quam consectetur quis
+                     repellendus saepe totam vitae recusandae ad.
+                  </p>
+                  <p>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum vitae, tempora nihil ea, a ab
+                     molestiae earum unde laudantium ex similique error saepe reprehenderit culpa distinctio, est
+                     expedita quasi quisquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit perspiciatis
+                     esse amet, consequuntur non laboriosam voluptatibus. Eos officia sed fugiat odit aut aspernatur
+                     voluptates quibusdam, rerum cum necessitatibus eaque fugit, praesentium quam consectetur quis
+                     repellendus saepe totam vitae recusandae ad.
+                  </p>
+                  <p>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum vitae, tempora nihil ea, a ab
+                     molestiae earum unde laudantium ex similique error saepe reprehenderit culpa distinctio, est
+                     expedita quasi quisquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit perspiciatis
+                     esse amet, consequuntur non laboriosam voluptatibus. Eos officia sed fugiat odit aut aspernatur
+                     voluptates quibusdam, rerum cum necessitatibus eaque fugit, praesentium quam consectetur quis
+                     repellendus saepe totam vitae recusandae ad.
+                  </p>
+                  <p>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum vitae, tempora nihil ea, a ab
+                     molestiae earum unde laudantium ex similique error saepe reprehenderit culpa distinctio, est
+                     expedita quasi quisquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit perspiciatis
+                     esse amet, consequuntur non laboriosam voluptatibus. Eos officia sed fugiat odit aut aspernatur
+                     voluptates quibusdam, rerum cum necessitatibus eaque fugit, praesentium quam consectetur quis
+                     repellendus saepe totam vitae recusandae ad.
+                  </p>
+               </div>
+            </main>
          </motion.div>
       </>
    )

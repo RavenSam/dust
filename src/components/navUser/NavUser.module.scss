@@ -1,0 +1,125 @@
+.NavUser {
+   width: 5rem;
+   height: 100vh;
+   position: fixed;
+   z-index: 11;
+   background: var(--color-cd);
+   transition: width 0.2s ease;
+
+   ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+
+      .logo {
+         a {
+            flex-direction: column;
+            height: 100%;
+            background-color: var(--color-bg);
+            border-bottom: 1px solid var(--grey);
+            opacity: 1;
+
+            img {
+               width: 50px;
+               height: 50px;
+               border-radius: 100%;
+               margin: 1.5rem;
+            }
+
+            span {
+               margin-bottom: 1.5rem;
+            }
+         }
+      }
+
+      li {
+         width: 100%;
+
+         &:last-child {
+            margin-top: auto;
+         }
+
+         a {
+            display: flex;
+            align-items: center;
+            height: 4rem;
+            color: var(--color-text);
+            margin: 0;
+
+            &:hover {
+               color: var(--color-primary);
+               background-color: var(--color-in);
+            }
+
+            svg {
+               min-width: 2rem;
+               margin: 0 1.5rem;
+            }
+
+            span {
+               display: none;
+            }
+         }
+      }
+   }
+
+   span {
+      display: none;
+   }
+}
+
+@media only screen and (max-width: 600px) {
+   .NavUser {
+      bottom: 0;
+      width: 100vw;
+      height: 4rem;
+
+      ul {
+         flex-direction: row;
+         .logo {
+            display: none;
+         }
+
+         li {
+            justify-content: center;
+            margin: 0px !important;
+
+            a {
+               justify-content: center;
+               height: 100%;
+            }
+         }
+      }
+   }
+}
+
+@media only screen and (min-width: 600px) {
+   .NavUser {
+      top: 0;
+
+      ul {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         height: 100%;
+
+         a {
+            opacity: 0.6;
+
+            &:hover {
+               opacity: 1;
+            }
+         }
+      }
+
+      &:hover {
+         width: 16rem;
+
+         .navItem span,
+         .logo span {
+            display: block;
+         }
+      }
+   }
+}

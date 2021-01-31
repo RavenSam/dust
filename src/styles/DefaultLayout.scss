@@ -1,5 +1,6 @@
 @import "shared";
 @import "404";
+@import "user";
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
@@ -15,8 +16,23 @@ body {
    overflow-x: hidden;
 }
 
+body {
+   &::-webkit-scrollbar {
+      width: 0.25rem;
+   }
+
+   &::-webkit-scrollbar-track {
+      background: #1e1e24;
+   }
+
+   &::-webkit-scrollbar-thumb {
+      background: var(--color-primary);
+   }
+}
+
 p {
    color: var(--grey);
+   margin: 0.8rem 0;
 }
 
 input {
