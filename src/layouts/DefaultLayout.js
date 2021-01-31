@@ -28,7 +28,7 @@ export default function DefaultLayout({ children }) {
             <style>{themeMode.getMode() === "darkMode" ? darkMode : lightMode}</style>
          </Head>
 
-         {showNav && <Header type="dark" position="fixed" />}
+         {showNav && <Header position="fixed" />}
 
          {children}
 

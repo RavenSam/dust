@@ -30,7 +30,10 @@ const containerVariants = {
  *  - type => the navbar type "light" | "dark" | "sticky"
  *  - type default => light
  */
-export default function Header({ type = "light", position = "absolute" }) {
+export default function Header({ type, position = "absolute" }) {
+   const navTypes = ["themed", "dark", "light", "sticky"]
+   type = navTypes.includes(type) ? type : navTypes[0]
+
    const [scrolled, setScrolled] = useState(false)
 
    useEffect(() => {
