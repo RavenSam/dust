@@ -30,7 +30,7 @@ export default function DefaultLayout({ children }) {
 
          {showNav && <Header type="dark" position="fixed" />}
 
-         <div className="container">{children}</div>
+         {children}
 
          <Flash />
       </>

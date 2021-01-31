@@ -6,7 +6,6 @@ const googleStrategy = require("./config/passport-setup/google-strategy")
 const gitHubStrategy = require("./config/passport-setup/github-strategy")
 const localStrategy = require("./config/passport-setup/local-strategy")
 const mongoose = require("mongoose")
-const flash = require("connect-flash")
 const { ensureAuthenticated, forwardAuthenticated } = require("./config/helpers/helpers-func")
 
 require("dotenv").config()
@@ -39,17 +38,6 @@ app.prepare().then(() => {
    server.use(passport.initialize())
    server.use(passport.session())
 
-   // Connect falsh
-   server.use(flash())
-
-   // GLobal var
-   server.use((req, res, next) => {
-      res.locals.success_msg = req.flash("success_msg")
-      res.locals.error_msg = req.flash("error_msg")
-      res.locals.error = req.flash("error")
-
-      next()
-   })
 
    //    Routes
    server.use("/api/auth", require("./routes/auth"))

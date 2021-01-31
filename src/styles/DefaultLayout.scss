@@ -1,5 +1,5 @@
 @import "shared";
-
+@import "404";
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
@@ -42,6 +42,7 @@ input:focus {
    text-transform: uppercase;
    letter-spacing: 1.8px;
    font-size: 1rem;
+   font-weight: bold;
    cursor: pointer;
    transition: all 0.5s;
    font-family: "Poppins", sans-serif;
@@ -50,12 +51,22 @@ input:focus {
 .btn-primary {
    background: var(--color-primary);
    color: #fff;
+
+   &:hover {
+      color: #fff !important;
+      text-shadow: #fff 0px 0px 5px, #fff 0px 0px 10px, #fff 0px 0px 15px;
+      animation: pulse 1s infinite;
+   }
 }
 
-.btn-primary:hover {
-   color: #fff !important;
-   text-shadow: #fff 0px 0px 5px, #fff 0px 0px 10px, #fff 0px 0px 15px;
-   animation: pulse 1s infinite;
+.btn-secondary {
+   border-color: var(--color-primary);
+   color: var(--color-primary);
+
+   &:hover {
+      box-shadow: var(--color-primary) 0px 0px 7px;
+      text-shadow: var(--color-primary) 0px 0px 7px;
+   }
 }
 
 @keyframes pulse {
