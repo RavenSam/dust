@@ -4,6 +4,9 @@ import { motion } from "framer-motion"
 import NavLinks from "./NavLinks"
 import GlobalContexts from "../../contexts/GlobalContexts"
 
+// Site Config
+import siteConfig from "../../theme/site-config"
+
 // StyleSheets
 import styles from "./scss/Header.module.scss"
 
@@ -66,8 +69,8 @@ export default function Header({ type, position = "absolute" }) {
                   {showLogo && (
                      <a href="index.html">
                         <img
-                           src={theme === "darkMode" ? "/img/logo/vercelW.svg" : "/img/logo/vercel.svg"}
-                           alt="Dust Logo"
+                           src={theme === "darkMode" ? siteConfig.logo.logoWhite : siteConfig.logo.logoBlack}
+                           alt={siteConfig.name}
                         />
                      </a>
                   )}

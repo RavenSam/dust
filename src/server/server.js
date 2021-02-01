@@ -38,7 +38,6 @@ app.prepare().then(() => {
    server.use(passport.initialize())
    server.use(passport.session())
 
-
    //    Routes
    server.use("/api/auth", require("./routes/auth"))
 

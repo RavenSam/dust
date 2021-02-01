@@ -5,8 +5,25 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import Bus from "../utils/Bus"
 import { Flash } from "../components/shared/Flash"
+import { motion } from "framer-motion"
 
 import { DashboardDisplay, DefaultDisplay } from "./display"
+import siteConfig from "../theme/site-config"
+
+// Animation Options
+const containerVariants = {
+   hidden: {
+      opacity: 0,
+   },
+   visible: {
+      opacity: 1,
+      transition: { duration: 0.5 },
+   },
+   exit: {
+      opacity: 0,
+      transition: { ease: "easeInOut" },
+   },
+}
 
 export default function DefaultLayout({ children }) {
    const { theme } = useContext(GlobalContexts)
@@ -18,8 +35,10 @@ export default function DefaultLayout({ children }) {
    }, [])
 
    const display = (path) => {
-      switch (path) {
-         case "/user/dashboard":
+      const root = path.split("/")[1]
+
+      switch (root) {
+         case "user":
             return <DashboardDisplay>{children}</DashboardDisplay>
 
          default:
@@ -31,9 +50,12 @@ export default function DefaultLayout({ children }) {
       <>
          <Head>
             <style>{theme === "darkMode" ? darkMode : lightMode}</style>
+            <link rel="icon" href={siteConfig.favicon} />
          </Head>
 
-         {display(path)}
+         <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+            {display(path)}
+         </motion.div>
 
          <Flash />
       </>
