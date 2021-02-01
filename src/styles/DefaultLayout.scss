@@ -50,6 +50,19 @@ input:focus {
    border-color: var(--color-primary);
 }
 
+svg {
+   display: block;
+}
+
+button {
+   border: none;
+   outline: none;
+   background-color: transparent;
+   color: var(--color-text);
+   display: block;
+   cursor: pointer;
+}
+
 .btn {
    border: 1px solid transparent;
    border-radius: 30px;

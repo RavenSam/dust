@@ -110,6 +110,6 @@ export default function Dashboard(props) {
 }
 
 Dashboard.getInitialProps = async ({ req }) => {
-   const user = req ? JSON.stringify(req.user) : null
+   const user = req.user ? JSON.stringify(req.user) : null
    return { user }
 }

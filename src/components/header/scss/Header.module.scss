@@ -27,7 +27,8 @@ $light: #ffffff;
       .logo {
          flex: 1;
 
-         svg {
+         svg,
+         img {
             width: 90px;
             path {
                fill: #fff;

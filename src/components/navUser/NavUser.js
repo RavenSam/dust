@@ -24,7 +24,7 @@ export default function NavUser() {
                   </li>
                )}
 
-               <li className={styles.navItem}>
+               <li className={`${styles.navItem} ${styles.current}`}>
                   <a href="#">
                      <Icons.AdjustmentsOutline />
                      <span>Dashboard</span>
@@ -56,6 +56,13 @@ export default function NavUser() {
                   <a href="#">
                      <Icons.CogOutline />
                      <span>Setings</span>
+                  </a>
+               </li>
+
+               <li className={styles.navItem}>
+                  <a href="/api/auth/logout">
+                     <Icons.LoginOutline />
+                     <span>Logout</span>
                   </a>
                </li>
             </ul>

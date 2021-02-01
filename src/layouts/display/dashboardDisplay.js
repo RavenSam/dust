@@ -1,7 +1,5 @@
 import NavUser from "../../components/navUser/NavUser"
-
-// Components
-import { Header } from "../../components"
+import TopNav from "../../components/navUser/TopNav"
 
 export default function DashboardDisplay({ children }) {
    return (
@@ -9,7 +7,7 @@ export default function DashboardDisplay({ children }) {
          <NavUser />
 
          <main className="dashboard-content">
-            <Header position="fixed" />
+            <TopNav />
 
             <div style={{ paddingTop: "5rem" }}></div>
 
