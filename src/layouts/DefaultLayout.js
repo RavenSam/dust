@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import Bus from "../utils/Bus"
 import { Flash } from "../components/shared/Flash"
 import { motion } from "framer-motion"
+import NProgress from "nprogress"
 
 import { DashboardDisplay, DefaultDisplay } from "./display"
 import siteConfig from "../theme/site-config"
@@ -28,10 +29,25 @@ const containerVariants = {
 export default function DefaultLayout({ children }) {
    const { theme } = useContext(GlobalContexts)
 
-   const path = useRouter().pathname
+   const router = useRouter()
+   const path = router.pathname
 
    useEffect(() => {
       window.flash = (message, type = "success") => Bus.emit("flash", { message, type })
+   }, [])
+
+   useEffect(() => {
+      let routeChangeStart = () => NProgress.start()
+      let routeChangeComplete = () => NProgress.done()
+
+      router.events.on("routeChangeStart", routeChangeStart)
+      router.events.on("routeChangeComplete", routeChangeComplete)
+      router.events.on("routeChangeError", routeChangeComplete)
+      return () => {
+         router.events.off("routeChangeStart", routeChangeStart)
+         router.events.off("routeChangeComplete", routeChangeComplete)
+         router.events.off("routeChangeError", routeChangeComplete)
+      }
    }, [])
 
    const display = (path) => {

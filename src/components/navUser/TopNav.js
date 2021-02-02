@@ -5,8 +5,8 @@ import ThemeSwitcher from "../shared/ThemeSwitcher"
 
 import styles from "./NavUser.module.scss"
 
-export default function NavUser() {
-   const { user, theme } = useContext(GlobalContexts)
+export default function TopNav({ user }) {
+   const { theme } = useContext(GlobalContexts)
 
    if (!user) {
       return <>...</>

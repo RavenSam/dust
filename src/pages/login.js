@@ -56,10 +56,14 @@ export default function LogIn() {
             setLoading(false)
 
             if (response.data.user) {
-               UserProfile.setUser(response.data.user)
+               // filter the password from the user
+               const userNoPw = Object.fromEntries(
+                  Object.entries(response.data.user).filter(([key, value]) => key !== "password")
+               )
+
+               UserProfile.setUser(userNoPw)
 
                window.flash(response.data.msg)
-               console.log(response.data.user)
                router.replace(response.data.redirectTo)
             } else {
                window.flash("You have entered an invalid username or password", "error")

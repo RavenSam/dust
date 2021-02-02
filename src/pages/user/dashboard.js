@@ -1,20 +1,18 @@
-import { useState, useEffect, useContext } from "react"
+import { useEffect, useContext } from "react"
 import Head from "next/head"
 import userProfile from "../../utils/user_profile"
 import GlobalContexts from "../../contexts/GlobalContexts"
 
 import styles from "../../styles/user/Dashboard.module.scss"
 
-export default function Dashboard(props) {
-   const { user } = useContext(GlobalContexts)
-
-   const propUser = JSON.parse(props.user)
+export default function Dashboard({ user }) {
+   const { setUser, getUser } = userProfile
 
    useEffect(() => {
-      if (propUser) {
-         userProfile.setUser(propUser)
+      if (user) {
+         setUser(user)
       }
-   }, [userProfile.getUser(), props.user])
+   }, [user])
 
    if (!user) {
       return <h1>Loading...</h1>
@@ -41,6 +39,9 @@ export default function Dashboard(props) {
 export async function getServerSideProps({ req }) {
    const user = req.user ? JSON.stringify(req.user) : null
 
+   // filter the password from the user
+   const useNoPw = Object.fromEntries(Object.entries(JSON.parse(user)).filter(([key, value]) => key !== "password"))
+
    if (!user) {
       return {
          redirect: {
@@ -51,6 +52,6 @@ export async function getServerSideProps({ req }) {
    }
 
    return {
-      props: { user },
+      props: { user: useNoPw },
    }
 }

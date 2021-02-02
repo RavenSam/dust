@@ -1,8 +1,7 @@
-import { useContext } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import * as Icons from "heroicons-react"
-import GlobalContexts from "../../contexts/GlobalContexts"
+import userProfile from "../../utils/user_profile"
 
 import styles from "./NavUser.module.scss"
 
@@ -13,8 +12,8 @@ const tabs = [
    { name: "Settings", href: "/user/settings", icon: Icons.CogOutline },
 ]
 
-export default function NavUser() {
-   const { user } = useContext(GlobalContexts)
+export default function NavUser({ user }) {
+   // const { getUser } = userProfile
 
    const path = useRouter().pathname
 
@@ -23,7 +22,7 @@ export default function NavUser() {
          <div className={`${styles.NavUser} navbar`}>
             <ul>
                {user && (
-                  <li className={styles.logo}>
+                  <li className={styles.thumbnail}>
                      <Link href="/">
                         <a>
                            <img src={user.thumbnail} alt="" />
@@ -44,10 +43,10 @@ export default function NavUser() {
                   </li>
                ))}
 
-               <li className={styles.navItem}>
+               <li className={styles.navItem} onClick={userProfile.userLogout}>
                   <a href="/api/auth/logout">
                      <Icons.LogoutOutline />
-                     <span>"Logout"</span>
+                     <span>Logout</span>
                   </a>
                </li>
             </ul>

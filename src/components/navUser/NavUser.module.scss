@@ -11,7 +11,7 @@
       align-items: center;
       height: 100%;
 
-      .logo {
+      .thumbnail {
          a {
             height: 4rem;
             border-bottom: 1px solid var(--grey);
@@ -71,7 +71,7 @@
       ul {
          flex-direction: row;
 
-         .logo {
+         .thumbnail {
             display: none;
          }
 
