@@ -1,4 +1,15 @@
-export default function Bubble({ r = "20", x = "50%", y = "50%", bg = "var(--color-primary)", a = 1, z = 0 }) {
+import { motion } from "framer-motion"
+
+export default function Bubble({
+   r = "20",
+   x = "50%",
+   y = "50%",
+   bg = "var(--color-primary)",
+   a = 1,
+   z = 0,
+   d = 1,
+   t = 2,
+}) {
    const bubbleStyle = {
       position: "absolute",
       borderRadius: "100%",
@@ -12,5 +23,12 @@ export default function Bubble({ r = "20", x = "50%", y = "50%", bg = "var(--col
       animation: "float 10s ease-in-out infinite",
    }
 
-   return <div style={bubbleStyle}></div>
+   return (
+      <motion.div
+         style={bubbleStyle}
+         initial={{ opacity: 0 }}
+         animate={{ opacity: a }}
+         transition={{ delay: d, duration: t }}
+      ></motion.div>
+   )
 }

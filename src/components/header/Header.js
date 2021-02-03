@@ -15,7 +15,7 @@ import styles from "./scss/Header.module.scss"
 const containerVariants = {
    hidden: {
       opacity: 0,
-      y: "-100vw",
+      y: "-30vw",
    },
    visible: {
       opacity: 1,
