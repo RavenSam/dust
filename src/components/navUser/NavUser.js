@@ -13,8 +13,6 @@ const tabs = [
 ]
 
 export default function NavUser({ user }) {
-   // const { getUser } = userProfile
-
    const path = useRouter().pathname
 
    return (

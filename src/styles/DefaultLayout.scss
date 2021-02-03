@@ -2,6 +2,8 @@
 @import "404";
 @import "user";
 @import "nprogress";
+@import "../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+@import "../../node_modules/react-responsive-carousel/lib/styles/carousel.min.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
@@ -37,7 +39,6 @@ p {
 }
 
 input {
-   padding: 10px 45px 10px 20px;
    border: 1px solid transparent;
    border-radius: 30px;
    background-color: var(--color-in);
@@ -108,8 +109,20 @@ button {
    }
 }
 
+@keyframes float {
+   0% {
+      transform: translatey(0px);
+   }
+   50% {
+      transform: translatey(-20px);
+   }
+   100% {
+      transform: translatey(0px);
+   }
+}
+
 .container {
-   width: 80%;
+   width: 85%;
    margin: 0 auto;
 
    @media screen and (max-width: 950px) {

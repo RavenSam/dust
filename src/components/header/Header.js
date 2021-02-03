@@ -3,6 +3,7 @@ import { useRouter, userRouter } from "next/router"
 import { motion } from "framer-motion"
 import NavLinks from "./NavLinks"
 import GlobalContexts from "../../contexts/GlobalContexts"
+import userProfile from "../../utils/user_profile"
 
 // Site Config
 import siteConfig from "../../theme/site-config"
@@ -38,11 +39,15 @@ export default function Header({ type, position = "absolute" }) {
    const navTypes = ["themed", "dark", "light", "sticky"]
    type = navTypes.includes(type) ? type : navTypes[0]
 
+   const [user, setUser] = useState(null)
+
+   useEffect(() => setUser(userProfile.getUser()), [])
+
    const router = useRouter()
    const showLogo = router.pathname !== "/user/dashboard"
 
    const [scrolled, setScrolled] = useState(false)
-   const { user, theme } = useContext(GlobalContexts)
+   const { theme } = useContext(GlobalContexts)
 
    useEffect(() => {
       const onScroll = (e) => (window.scrollY > 50 ? setScrolled(true) : setScrolled(false))

@@ -9,6 +9,7 @@ import axios from "axios"
 import UserProfile from "../utils/user_profile"
 import * as Icons from "heroicons-react"
 import BackButton from "../components/shared/BackButton"
+import Loader from "react-loader-spinner"
 
 // StyleSheets
 import styles from "../styles/Sign.module.scss"
@@ -154,7 +155,8 @@ export default function LogIn() {
                   )}
 
                   <motion.button type="submit" className="btn btn-primary">
-                     {loading && <img src="/lo.gif" />}Login
+                     Login
+                     {loading && <Loader style={{ marginLeft: 5 }} type="Oval" color="#fff" height={20} width={20} />}
                   </motion.button>
                </form>
 

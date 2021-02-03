@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import Link from "next/link"
 import * as Icons from "heroicons-react"
 import GlobalContexts from "../../contexts/GlobalContexts"
 import ThemeSwitcher from "../shared/ThemeSwitcher"
@@ -8,20 +9,20 @@ import styles from "./NavUser.module.scss"
 export default function TopNav({ user }) {
    const { theme } = useContext(GlobalContexts)
 
-   if (!user) {
-      return <>...</>
-   }
-
    return (
       <>
          <div className={`${styles.TopNav} `}>
             <ul>
                <div className={styles.NavLeftSide}>
                   <li className={styles.logo}>
-                     <img
-                        src={theme === "darkMode" ? "/img/logo/vercelW.svg" : "/img/logo/vercel.svg"}
-                        alt="Dust Logo"
-                     />
+                     <Link href="/">
+                        <a>
+                           <img
+                              src={theme === "darkMode" ? "/img/logo/vercelW.svg" : "/img/logo/vercel.svg"}
+                              alt="Dust Logo"
+                           />
+                        </a>
+                     </Link>
                   </li>
                </div>
 

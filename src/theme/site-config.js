@@ -3,9 +3,10 @@ export default {
 
    logo: {
       //    for dark theme
-      logoWhite: "/img/logo/vercelW.svg",
+      logoWhite: "/img/logo/DustLogoWhite.png",
       //   for light theme
-      logoBlack: "/img/logo/vercel.svg",
+      // logoBlack: "/img/logo/vercel.svg",
+      logoBlack: "/img/logo/DustLogoBlack.png",
    },
 
    favicon: "/favicon.ico",

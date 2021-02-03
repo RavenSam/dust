@@ -178,7 +178,8 @@ export default function SignUp() {
                   )}
 
                   <motion.button type="submit" className="btn btn-primary">
-                     {loading && <img src="/lo.gif" />}Sign Up
+                     Sign Up
+                     {loading && <Loader style={{ marginLeft: 5 }} type="Oval" color="#fff" height={20} width={20} />}
                   </motion.button>
                </form>
 
