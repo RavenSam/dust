@@ -2,78 +2,135 @@
    width: 100%;
    max-width: 1000px;
    margin: 0 auto;
-   position: relative;
 
-   nav {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      padding: 1rem;
-      color: #fff;
-
-      svg {
-         cursor: pointer;
-      }
-   }
-
-   .featuredImg {
-      width: 100%;
-      max-height: 110vh;
-      overflow: hidden;
+   .content {
+      position: relative;
+      padding-bottom: 2rem;
       border-radius: 0 0 10px 10px;
-   }
+      background: var(--color-cd);
 
-   .postContent {
-      h2 {
-         margin: 1rem 0;
-         text-transform: capitalize;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+      @media (max-width: 1000px) {
+         border-radius: 0;
       }
 
-      .postTags {
-         margin: 1rem 0;
-         display: flex;
-         flex-wrap: wrap;
-         align-items: center;
-
-         a {
-            margin: 5px;
-            text-transform: capitalize;
-            background-color: var(--color-in);
-            color: var(--color-text);
-            font-size: 0.8rem;
-            font-weight: 100;
-            border: 1px solid var(--color-text);
-            opacity: 0.7;
-            padding: 0.2rem 0.7rem;
-            border-radius: 50px;
-         }
-      }
-
-      .postAuthor {
+      nav {
+         position: absolute;
+         top: 0;
+         left: 0;
          display: flex;
          align-items: center;
          justify-content: space-between;
          width: 100%;
+         padding: 1rem;
+         color: #fff;
 
-         .authorLink {
-            color: var(--color-text);
-            display: flex;
-            align-items: center;
-
-            svg {
-               margin-left: 10px;
-               cursor: pointer;
-            }
+         svg {
+            cursor: pointer;
          }
       }
 
-      .postText {
-         margin: 1rem 0;
-         text-align: justify;
+      .featuredImg {
+         width: 100%;
+         max-height: 100vh;
+         overflow: hidden;
+      }
+
+      .postContent {
+         h2 {
+            margin: 1rem 0;
+            text-transform: capitalize;
+         }
+
+         .postTags {
+            margin: 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            a {
+               margin: 5px;
+               text-transform: capitalize;
+               background-color: var(--color-in);
+               color: var(--color-text);
+               font-size: 0.8rem;
+               font-weight: 100;
+               border: 1px solid var(--color-text);
+               opacity: 0.7;
+               padding: 0.2rem 0.7rem;
+               border-radius: 50px;
+            }
+         }
+
+         .postAuthor {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            .authorLink {
+               color: var(--color-text);
+               display: flex;
+               align-items: center;
+
+               svg {
+                  margin-left: 10px;
+                  cursor: pointer;
+               }
+            }
+         }
+
+         .postText {
+            margin: 1rem 0;
+            text-align: justify;
+         }
+      }
+   }
+
+   .comments {
+      margin: 2rem 0;
+      background: var(--color-cd);
+      border-radius: 10px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+      padding: 2rem 0;
+
+      @media (max-width: 1000px) {
+         border-radius: 0;
+      }
+
+      .comment {
+         display: flex;
+         align-items: flex-start;
+         width: 100%;
+         padding: 1rem 0;
+
+         .picture {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            overflow: hidden;
+            margin-right: 2rem;
+         }
+
+         .cmtContent {
+            h5 {
+               text-transform: capitalize;
+               letter-spacing: 1.8px;
+               font-size: 15px;
+
+               span {
+                  color: var(--grey);
+                  opacity: 0.7;
+                  font-size: 12px;
+               }
+            }
+
+            p {
+               font-size: 1.1rem;
+            }
+         }
       }
    }
 }
