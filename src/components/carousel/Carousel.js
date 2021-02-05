@@ -1,21 +1,20 @@
-import { Carousel } from "react-responsive-carousel"
+import { useState, useEffect } from "react"
+import dynamic from "next/dynamic"
 
-export default function Slide() {
+const OwlCarousel = dynamic(import("react-owl-carousel"), { ssr: false })
+
+export default function Carousel({ children }) {
+   const [display, setDisplay] = useState(false)
+
+   useEffect(() => setDisplay(true), [])
+
+   if (!display) {
+      return <>{children}</>
+   }
+
    return (
-      <>
-         <Carousel>
-            <div key="content-1" className="my-slide content">
-               <img src="/img/assets/1.jpg" />
-            </div>
-
-            <div key="content-2" className="my-slide content">
-               <img src="/img/assets/2.jpg" />
-            </div>
-
-            <div key="content-3" className="my-slide content">
-               <img src="/img/assets/3.jpg" />
-            </div>
-         </Carousel>
-      </>
+      <OwlCarousel items={5} autoWidth>
+         {children}
+      </OwlCarousel>
    )
 }

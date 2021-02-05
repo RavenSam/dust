@@ -1,9 +1,11 @@
+@import "../../node_modules/react-responsive-carousel/lib/styles/carousel.min.css";
+@import "../../node_modules/owl.carousel/dist/assets/owl.carousel.css";
+@import "../../node_modules/owl.carousel/dist/assets/owl.theme.default.css";
 @import "shared";
 @import "404";
 @import "user";
 @import "nprogress";
 @import "../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-@import "../../node_modules/react-responsive-carousel/lib/styles/carousel.min.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
@@ -32,6 +34,10 @@ body {
       background: var(--color-primary);
    }
 }
+
+// section {
+//    padding-top: 5rem;
+// }
 
 p {
    color: var(--grey);
@@ -134,4 +140,8 @@ button {
       width: 100% !important;
       padding: 0 1rem;
    }
+}
+
+.owl-carousel .owl-stage {
+   min-height: 400px;
 }

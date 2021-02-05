@@ -4,6 +4,9 @@ import * as Icons from "heroicons-react"
 import GlobalContexts from "../../contexts/GlobalContexts"
 import ThemeSwitcher from "../shared/ThemeSwitcher"
 
+// Site Config
+import siteConfig from "../../theme/site-config"
+
 import styles from "./NavUser.module.scss"
 
 export default function TopNav({ user }) {
@@ -18,8 +21,8 @@ export default function TopNav({ user }) {
                      <Link href="/">
                         <a>
                            <img
-                              src={theme === "darkMode" ? "/img/logo/vercelW.svg" : "/img/logo/vercel.svg"}
-                              alt="Dust Logo"
+                              src={theme === "darkMode" ? siteConfig.logo.logoWhite : siteConfig.logo.logoBlack}
+                              alt={siteConfig.name}
                            />
                         </a>
                      </Link>

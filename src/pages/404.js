@@ -14,7 +14,7 @@ export default function NotFound() {
                <Link href="/">
                   <a className="btn btn-secondary">Go Home</a>
                </Link>
-               <a className="btn btn-primary" onClick={() => router.back}>
+               <a className="btn btn-primary" onClick={() => router.back()}>
                   Go Back
                </a>
             </div>

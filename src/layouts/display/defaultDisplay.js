@@ -13,7 +13,7 @@ export default function DefaultDisplay({ children }) {
       <>
          {showNav && <Header position="fixed" />}
 
-         {showNav && <div style={{ paddingTop: "5rem" }}></div>}
+         {/*      {showNav && <div style={{ paddingTop: "5rem" }}></div>} */}
 
          {children}
       </>

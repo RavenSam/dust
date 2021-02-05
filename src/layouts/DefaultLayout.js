@@ -8,7 +8,7 @@ import { Flash } from "../components/shared/Flash"
 import { motion } from "framer-motion"
 import NProgress from "nprogress"
 
-import { DashboardDisplay, DefaultDisplay } from "./display"
+import { DashboardDisplay, DefaultDisplay, PostSingle } from "./display"
 import siteConfig from "../theme/site-config"
 
 // Animation Options
@@ -57,6 +57,9 @@ export default function DefaultLayout({ children }) {
          case "user":
             return <DashboardDisplay>{children}</DashboardDisplay>
 
+         case "post":
+            return <PostSingle>{children}</PostSingle>
+
          default:
             return <DefaultDisplay>{children}</DefaultDisplay>
       }
@@ -74,6 +77,7 @@ export default function DefaultLayout({ children }) {
          </motion.div>
 
          <Flash />
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       </>
    )
 }

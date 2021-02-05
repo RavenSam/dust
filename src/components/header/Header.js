@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react"
 import { useRouter, userRouter } from "next/router"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import NavLinks from "./NavLinks"
 import GlobalContexts from "../../contexts/GlobalContexts"
@@ -72,12 +73,14 @@ export default function Header({ type, position = "absolute" }) {
             <div className={` container ${styles.navContainer}`}>
                <div className={styles.logo}>
                   {showLogo && (
-                     <a href="index.html">
-                        <img
-                           src={theme === "darkMode" ? siteConfig.logo.logoWhite : siteConfig.logo.logoBlack}
-                           alt={siteConfig.name}
-                        />
-                     </a>
+                     <Link href="/">
+                        <a>
+                           <img
+                              src={theme === "darkMode" ? siteConfig.logo.logoWhite : siteConfig.logo.logoBlack}
+                              alt={siteConfig.name}
+                           />
+                        </a>
+                     </Link>
                   )}
                </div>
 

@@ -12,9 +12,9 @@ export default function Hero() {
 
    return (
       <section className={styles.hero}>
-         <Bubble r="40px" x="20%" y="5%" a="0.8" a="0.5" d="2" />
+         <Bubble r="60px" x="20%" y="18%" a="0.8" a="0.5" d="2" />
          <Bubble bg="#ff0c36" r="100px" x="90%" y="20%" a="0.5" d="2.5" />
-         <Bubble bg="#009688" r="20px" x="10%" y="90%" a="0.5" d="3" />
+         <Bubble bg="#009688" r="40px" x="5%" y="90%" a="0.5" d="3" />
 
          <div className={styles.heroLeft}>
             <motion.h2
