@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon src/server/server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node nodemon src/server/server.js"
+    "start": "NODE_ENV=production node src/server/server.js"
   },
   "dependencies": {
     "axios": "^0.21.1",

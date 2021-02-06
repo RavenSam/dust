@@ -1,6 +1,7 @@
 import { Fragment } from "react"
 import Author from "../../shared/Author"
 import Link from "next/link"
+import Image from "next/image"
 import Carousel from "../../carousel/Carousel"
 import { motion } from "framer-motion"
 
@@ -11,7 +12,7 @@ const container = {
    visible: {
       opacity: 1,
       transition: {
-         delay: 2,
+         delay: 1,
          duration: 1,
       },
    },
@@ -28,7 +29,7 @@ export default function Posts({ posts, carousel = false }) {
                   <Link href={`/post/${post.id}`}>
                      <a>
                         <div className={styles.postImage}>
-                           <img src={post.image} alt={post.text} />
+                           <Image src={post.image} alt={post.text} width={300} height={380} />
                         </div>
 
                         <div className={styles.postContent}>

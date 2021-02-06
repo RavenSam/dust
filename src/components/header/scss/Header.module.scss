@@ -91,7 +91,7 @@ $light: #ffffff;
    // position: fixed;
    background: $light;
    padding: 0;
-   height: 70px;
+   height: 60px;
    -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
    -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
@@ -116,7 +116,7 @@ $light: #ffffff;
    position: absolute;
    background: #1f1d2b;
    padding: 0;
-   height: 70px;
+   height: 60px;
    -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
    -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
@@ -141,9 +141,9 @@ $light: #ffffff;
    background: var(--color-bg);
    padding: 0;
    height: 70px;
-   -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
-   -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
-   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+   -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
    .links {
       li a {
          color: var(--color-text);
@@ -152,6 +152,10 @@ $light: #ffffff;
       .themeSwitcher {
          color: var(--color-text);
       }
+   }
+
+   @media (max-width: 768px) {
+      height: 60px;
    }
 }
 

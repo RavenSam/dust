@@ -6,13 +6,13 @@ import userProfile from "../../utils/user_profile"
 import styles from "./NavUser.module.scss"
 
 const tabs = [
-   { name: "Dashboard", href: "/user/dashboard", icon: Icons.AdjustmentsOutline },
-   { name: "Bookmak", href: "/user/bookmark", icon: Icons.BookmarkOutline },
-   { name: "History", href: "/user/history", icon: Icons.ClockOutline },
-   { name: "Settings", href: "/user/settings", icon: Icons.CogOutline },
+   { name: "Dashboard", icon: Icons.AdjustmentsOutline, tab: 1 },
+   { name: "Bookmak", icon: Icons.BookmarkOutline, tab: 2 },
+   { name: "History", icon: Icons.ClockOutline, tab: 3 },
+   { name: "Settings", icon: Icons.CogOutline, tab: 4 },
 ]
 
-export default function NavUser({ user }) {
+export default function NavUser({ user, setTab, tab }) {
    const path = useRouter().pathname
 
    return (
@@ -30,14 +30,12 @@ export default function NavUser({ user }) {
                   </li>
                )}
 
-               {tabs.map((tab, index) => (
-                  <li key={index} className={`${styles.navItem} ${path === tab.href && styles.current}`}>
-                     <Link href={tab.href}>
-                        <a>
-                           <tab.icon />
-                           <span>{tab.name}</span>
-                        </a>
-                     </Link>
+               {tabs.map((t, index) => (
+                  <li key={index} className={`${styles.navItem} ${tab == t.tab && styles.current}`}>
+                     <a onClick={() => setTab(t.tab)}>
+                        <t.icon />
+                        <span>{t.name}</span>
+                     </a>
                   </li>
                ))}
 

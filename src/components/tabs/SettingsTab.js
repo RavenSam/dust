@@ -1,6 +1,11 @@
+import Head from "next/head"
+
 export default function DashSettings() {
    return (
       <>
+         <Head>
+            <title>Settings</title>
+         </Head>
          <h1>Settings</h1>
          <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum vitae, tempora nihil ea, a ab molestiae

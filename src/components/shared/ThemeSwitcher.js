@@ -16,8 +16,8 @@ export default function ThemeSwitcher({ styles }) {
    }
 
    return (
-      <button className={styles ? `${styles.themeSwitcher}` : "switcherBtn"} onClick={togleMode}>
-         {theme === "darkMode" ? <Icons.SunOutline /> : <Icons.MoonOutline />}
-      </button>
+      <a className={styles ? `${styles.themeSwitcher}` : "switcherBtn"} onClick={togleMode}>
+         {theme === "darkMode" ? <Icons.Sun /> : <Icons.Moon />}
+      </a>
    )
 }

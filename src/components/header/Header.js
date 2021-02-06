@@ -16,17 +16,15 @@ import styles from "./scss/Header.module.scss"
 const containerVariants = {
    hidden: {
       opacity: 0,
-      y: "-30vw",
+      y: "-10vw",
    },
    visible: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring" },
    },
    exit: {
       opacity: 0,
-      y: "-100vw",
-      transition: { ease: "easeInOut" },
+      y: "-10vw",
    },
 }
 

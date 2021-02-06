@@ -31,11 +31,11 @@ export default function TopNav({ user }) {
 
                <div className={styles.NavRightSide}>
                   <li className={`${styles.navItem} ${styles.active}`}>
-                     <Icons.BellOutline />
+                     <Icons.Bell />
                   </li>
 
                   <li className={styles.navItem}>
-                     <Icons.ChatOutline />
+                     <Icons.Chat />
                   </li>
 
                   <li className={styles.navItem}>
@@ -44,7 +44,7 @@ export default function TopNav({ user }) {
 
                   {user && (
                      <li className={styles.thumbnail}>
-                        <img src={user.thumbnail} alt="" />
+                        <img src={user.thumbnail} alt="User" />
                      </li>
                   )}
                </div>

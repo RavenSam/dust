@@ -8,6 +8,7 @@ import * as Yup from "yup"
 import axios from "axios"
 import * as Icons from "heroicons-react"
 import BackButton from "../components/shared/BackButton"
+import Loader from "react-loader-spinner"
 
 // StyleSheets
 import styles from "../styles/Sign.module.scss"
@@ -33,7 +34,7 @@ const containerVariants = {
 export default function SignUp() {
    const [showPw, setShowPw] = useState(false)
    const [showPw2, setShowPw2] = useState(false)
-   const [loading, setLoading] = useState(false)
+   const [loading, setLoading] = useState(true)
 
    const router = useRouter()
 
@@ -177,9 +178,8 @@ export default function SignUp() {
                      <p className={styles.error}>{formik.errors.password2}</p>
                   )}
 
-                  <motion.button type="submit" className="btn btn-primary">
-                     Sign Up
-                     {loading && <Loader style={{ marginLeft: 5 }} type="Oval" color="#fff" height={20} width={20} />}
+                  <motion.button type="submit" className="btn btn-primary" disabled={loading && "true"}>
+                     {loading ? <Loader type="Oval" color="#fff" height={20} width={20} /> : "Sign Up"}
                   </motion.button>
                </form>
 

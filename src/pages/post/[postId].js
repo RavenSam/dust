@@ -3,7 +3,7 @@ import * as Icons from "heroicons-react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import Moment from "react-moment"
-
+import Image from "next/image"
 import Author from "../../components/shared/Author"
 import LoadingPage from "../../components/shared/LoadingPage"
 
@@ -30,7 +30,7 @@ export default function Post({ post, comments }) {
                </nav>
 
                <div className={styles.featuredImg}>
-                  <img src={post.image} alt={post.text} />
+                  <Image src={post.image} alt={post.text} layout="intrinsic" width={1500} height={875} />
                </div>
 
                <div className="container">
