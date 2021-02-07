@@ -88,15 +88,15 @@ export default function LogIn() {
 
                <div className={styles.socialBtn}>
                   <a href="/api/auth/google">
-                     <div>
+                     <figure>
                         <img src="/google-icon.svg" alt="Sign With Google" />
-                     </div>
+                     </figure>
                   </a>
 
                   <a href="/api/auth/github">
-                     <div>
+                     <figure>
                         <img src="/github-1.svg" alt="Sign With github" />
-                     </div>
+                     </figure>
                   </a>
                </div>
 

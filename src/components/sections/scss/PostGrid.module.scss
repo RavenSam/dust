@@ -1,5 +1,9 @@
 .postGrid {
-   padding: 1rem;
+   padding: 3rem 1rem;
+
+   h2 {
+      padding: 1rem;
+   }
 
    .gallery {
       display: grid;
@@ -80,7 +84,7 @@
 
 @media (max-width: 768px) {
    .postGrid {
-      padding: 0rem;
+      padding: 3rem 0rem;
 
       .gallery {
          display: flex;

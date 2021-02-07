@@ -58,7 +58,7 @@ SHARED
                background: var(--color-in);
             }
 
-            & > div {
+            & > figure {
                height: 25px;
             }
          }
@@ -102,12 +102,11 @@ SHARED
             background: var(--color-in);
             border-radius: 30px;
             margin: 0.8rem 0 0 0;
-          
 
             input {
                width: 100%;
                padding: 10px 45px 10px 20px;
-                 transition: all .5s ease;
+               transition: all 0.5s ease;
             }
 
             & > svg {

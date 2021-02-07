@@ -1,7 +1,6 @@
 import Head from "next/head"
 import * as Sections from "../components/sections"
 import axios from "axios"
-import { motion } from "framer-motion"
 import { fade } from "../animations"
 
 import styles from "../styles/Home.module.scss"
@@ -19,9 +18,13 @@ export default function Home({ posts }) {
             </div>
 
             <div className={styles.latest}>
+               <h2>Latest</h2>
                <Sections.Posts posts={posts} carousel={true} />
             </div>
+
             <Sections.PostGrid />
+
+            <Sections.AboutUs />
          </div>
       </>
    )
