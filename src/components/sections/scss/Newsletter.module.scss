@@ -1,0 +1,74 @@
+.newsletter {
+   margin: 5rem 0;
+   width: 100%;
+   background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/assets/dog8.jpg");
+   background-position: center;
+   background-size: cover;
+   background-attachment: fixed;
+   height: 75vh;
+
+   .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 750px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 1rem;
+
+      h2 {
+         color: #fff;
+         font-size: 2rem;
+         letter-spacing: 1.5px;
+      }
+
+      .input {
+         position: relative;
+         border: 1px solid transparent;
+         background: transparent;
+         border-radius: 30px;
+         margin: 1rem 0;
+         min-width: 300px;
+
+         input {
+            padding: 10px 45px 10px 20px;
+            width: 100%;
+            transition: border-color 0.5s ease-in-out;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(3px);
+         }
+
+         & > svg {
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            width: 30px;
+            color: var(--color-primary);
+         }
+      }
+   }
+}
+
+@media (max-width: 580px) {
+   .newsletter {
+      width: 100%;
+      height: 50vh;
+
+      .content {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         text-align: center;
+
+         h2 {
+            font-size: 1.5rem;
+            letter-spacing: 1.2px;
+         }
+
+         .input {
+         }
+      }
+   }
+}

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import * as Icons from "heroicons-react"
+import { Search } from "heroicons-react"
 import { motion } from "framer-motion"
 
 import styles from "../scss/Hero.module.scss"
@@ -53,7 +53,7 @@ export default function Hero() {
                animate={{ y: 0, opacity: 1 }}
                transition={{ delay: 1.9, duration: 0.8 }}
             >
-               <Icons.Search />
+               <Search />
 
                <input type="text" placeholder="Search Article" name="search" value={search} onChange={handleChange} />
             </motion.div>

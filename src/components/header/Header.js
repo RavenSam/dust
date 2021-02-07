@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react"
-import { useRouter, userRouter } from "next/router"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import NavLinks from "./NavLinks"
@@ -26,18 +25,15 @@ export default function Header({ type = "themed", position = "absolute" }) {
 
    useEffect(() => setUser(userProfile.getUser()), [])
 
-   const [scrolled, setScrolled] = useState(false)
    const { theme } = useContext(GlobalContexts)
 
-   useEffect(() => {
-      const onScroll = (e) => (window.scrollY > 50 ? setScrolled(true) : setScrolled(false))
+   // Sticky Is not Supported
+   // const [scrolled, setScrolled] = useState(false)
+   // useEffect(() => {
+   //    const onScroll = (e) => (window.scrollY > 50 ? setScrolled(true) : setScrolled(false))
 
-      window.addEventListener("scroll", onScroll)
-   }, [scrolled])
-
-   const headerClasses = (type) => {
-      return `${styles.header} ${styles[type]} ${type === "sticky" && scrolled && styles.scroll}`
-   }
+   //    window.addEventListener("scroll", onScroll)
+   // }, [scrolled])
 
    return (
       <>
@@ -47,7 +43,7 @@ export default function Header({ type = "themed", position = "absolute" }) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className={headerClasses(type)}
+            className={`${styles.header} ${styles[type]} ${type === "sticky" && scrolled && styles.scroll}`}
          >
             <div className={` container ${styles.navContainer}`}>
                <div className={styles.logo}>

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react"
-import GlobalContexts from "../contexts/GlobalContexts"
-import { darkMode, lightMode } from "../theme/mode"
 import Head from "next/head"
 import { useRouter } from "next/router"
+import GlobalContexts from "../contexts/GlobalContexts"
+import { darkMode, lightMode } from "../theme/mode"
 import Bus from "../utils/Bus"
 import { Flash } from "../components/shared/Flash"
 import { motion } from "framer-motion"
@@ -44,6 +44,9 @@ export default function DefaultLayout({ children }) {
             return <DashboardDisplay>{children}</DashboardDisplay>
 
          case "post":
+         case "login":
+         case "signup":
+         case "404":
             return <EmptyDisplay>{children}</EmptyDisplay>
 
          default:

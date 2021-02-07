@@ -25,6 +25,8 @@ export default function Home({ posts }) {
             <Sections.PostGrid />
 
             <Sections.AboutUs />
+
+            <Sections.Newsletter />
          </div>
       </>
    )

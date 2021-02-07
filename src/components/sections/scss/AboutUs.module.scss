@@ -4,6 +4,7 @@
    margin: 3rem auto;
    border-radius: 10px;
    overflow: hidden;
+   background: var(--color-cd);
    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
    max-height: 450px;
    max-width: 700px;
@@ -74,8 +75,14 @@
          color: #fff;
          padding: 2rem 1rem;
 
+         h2 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+         }
+
          p {
             color: #eee;
+            font-size: 0.8rem;
          }
 
          span {
