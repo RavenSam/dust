@@ -1,28 +1,26 @@
 import axios from "axios"
 import * as Icons from "heroicons-react"
 import Link from "next/link"
-import { useRouter } from "next/router"
 import Moment from "react-moment"
 import Image from "next/image"
 import Author from "../../components/shared/Author"
 import LoadingPage from "../../components/shared/LoadingPage"
+import { motion } from "framer-motion"
+import { fromRight } from "../../animations"
+import BackButton from "../../components/shared/BackButton"
 
 import styles from "../../styles/SinglePost.module.scss"
 
 export default function Post({ post, comments }) {
-   const router = useRouter()
-
    if (!post) return <LoadingPage />
-
-   // console.log(comments.data)
 
    return (
       <>
-         <div className={styles.post}>
+         <motion.div className={styles.post} variants={fromRight} initial="hidden" animate="visible" exit="exit">
             <div className={styles.content}>
                <nav>
                   <div className="leftSide">
-                     <Icons.ArrowLeftOutline onClick={() => router.back()} />
+                     <BackButton color="#fff" />
                   </div>
                   <div className="rightSide">
                      <Icons.BookmarkOutline />
@@ -30,7 +28,7 @@ export default function Post({ post, comments }) {
                </nav>
 
                <div className={styles.featuredImg}>
-                  <Image src={post.image} alt={post.text} layout="intrinsic" width={1500} height={875} />
+                  <Image src={post.image} alt={post.text} layout="responsive" width={1500} height={875} />
                </div>
 
                <div className="container">
@@ -106,7 +104,7 @@ export default function Post({ post, comments }) {
                   )}
                </div>
             </div>
-         </div>
+         </motion.div>
       </>
    )
 }

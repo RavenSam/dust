@@ -12,21 +12,21 @@ export default function Hero() {
    return (
       <section className={styles.hero}>
          <div className={styles.heroLeft}>
-            <motion.h2
+            <motion.h1
                initial={{ y: 100, opacity: 0 }}
                animate={{ y: 0, opacity: 1 }}
                transition={{ delay: 1.5, duration: 0.8 }}
             >
                Break The Code Barrier
-            </motion.h2>
+            </motion.h1>
 
-            <motion.h5
+            <motion.p
                initial={{ y: 100, opacity: 0 }}
                animate={{ y: 0, opacity: 1 }}
                transition={{ delay: 1.7, duration: 0.8 }}
             >
                Build better bussiness websiltes, faster, without coding
-            </motion.h5>
+            </motion.p>
 
             <motion.button
                className="btn btn-primary"
@@ -39,13 +39,13 @@ export default function Hero() {
          </div>
 
          <div className={styles.heroRight}>
-            <motion.h3
+            <motion.h2
                initial={{ y: 100, opacity: 0 }}
                animate={{ y: 0, opacity: 1 }}
                transition={{ delay: 1.6, duration: 0.8 }}
             >
                search your article
-            </motion.h3>
+            </motion.h2>
 
             <motion.div
                className={styles.input}

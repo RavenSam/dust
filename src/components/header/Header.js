@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import NavLinks from "./NavLinks"
 import GlobalContexts from "../../contexts/GlobalContexts"
 import userProfile from "../../utils/user_profile"
+import { fromTop } from "../../animations"
 
 // Site Config
 import siteConfig from "../../theme/site-config"
@@ -12,38 +13,18 @@ import siteConfig from "../../theme/site-config"
 // StyleSheets
 import styles from "./scss/Header.module.scss"
 
-// Animation Options
-const containerVariants = {
-   hidden: {
-      opacity: 0,
-      y: "-10vw",
-   },
-   visible: {
-      opacity: 1,
-      y: 0,
-   },
-   exit: {
-      opacity: 0,
-      y: "-10vw",
-   },
-}
-
 /**
  *
  * @param {{type | position }}string
  *  - type => the navbar type "light" | "dark" | "sticky"
  *  - type default => light
  */
-export default function Header({ type, position = "absolute" }) {
-   const navTypes = ["themed", "dark", "light", "sticky"]
-   type = navTypes.includes(type) ? type : navTypes[0]
+export default function Header({ type = "themed", position = "absolute" }) {
+   // const navTypes = ["themed", "dark", "light", "sticky"]
 
    const [user, setUser] = useState(null)
 
    useEffect(() => setUser(userProfile.getUser()), [])
-
-   const router = useRouter()
-   const showLogo = router.pathname !== "/user/dashboard"
 
    const [scrolled, setScrolled] = useState(false)
    const { theme } = useContext(GlobalContexts)
@@ -62,7 +43,7 @@ export default function Header({ type, position = "absolute" }) {
       <>
          <motion.header
             style={type !== "sticky" && { position }}
-            variants={containerVariants}
+            variants={fromTop}
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -70,16 +51,14 @@ export default function Header({ type, position = "absolute" }) {
          >
             <div className={` container ${styles.navContainer}`}>
                <div className={styles.logo}>
-                  {showLogo && (
-                     <Link href="/">
-                        <a>
-                           <img
-                              src={theme === "darkMode" ? siteConfig.logo.logoWhite : siteConfig.logo.logoBlack}
-                              alt={siteConfig.name}
-                           />
-                        </a>
-                     </Link>
-                  )}
+                  <Link href="/">
+                     <a>
+                        <img
+                           src={theme === "darkMode" ? siteConfig.logo.logoWhite : siteConfig.logo.logoBlack}
+                           alt={siteConfig.name}
+                        />
+                     </a>
+                  </Link>
                </div>
 
                <NavLinks styles={styles} user={user} />

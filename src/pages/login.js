@@ -10,27 +10,10 @@ import UserProfile from "../utils/user_profile"
 import * as Icons from "heroicons-react"
 import BackButton from "../components/shared/BackButton"
 import Loader from "react-loader-spinner"
+import { fadeLeftSpring } from "../animations"
 
 // StyleSheets
 import styles from "../styles/Sign.module.scss"
-
-// Animation Options
-const containerVariants = {
-   hidden: {
-      opacity: 0,
-      x: "-100vw",
-   },
-   visible: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "spring" },
-   },
-   exit: {
-      opacity: 0,
-      x: "-100vw",
-      transition: { ease: "easeInOut" },
-   },
-}
 
 export default function LogIn() {
    const [showPw, setShowPw] = useState(false)
@@ -90,7 +73,7 @@ export default function LogIn() {
          <div className={styles.logIn}>
             <motion.div
                className={styles.card}
-               variants={containerVariants}
+               variants={fadeLeftSpring}
                initial="hidden"
                animate="visible"
                exit="exit"

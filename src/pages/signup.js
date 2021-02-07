@@ -9,32 +9,15 @@ import axios from "axios"
 import * as Icons from "heroicons-react"
 import BackButton from "../components/shared/BackButton"
 import Loader from "react-loader-spinner"
+import { fadeRightSpring } from "../animations"
 
 // StyleSheets
 import styles from "../styles/Sign.module.scss"
 
-// Animation Options
-const containerVariants = {
-   hidden: {
-      opacity: 0,
-      x: "100vw",
-   },
-   visible: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "spring" },
-   },
-   exit: {
-      opacity: 0,
-      x: "100vw",
-      transition: { ease: "easeInOut" },
-   },
-}
-
 export default function SignUp() {
    const [showPw, setShowPw] = useState(false)
    const [showPw2, setShowPw2] = useState(false)
-   const [loading, setLoading] = useState(true)
+   const [loading, setLoading] = useState(false)
 
    const router = useRouter()
 
@@ -87,7 +70,7 @@ export default function SignUp() {
          <div className={styles.signUp}>
             <motion.div
                className={styles.card}
-               variants={containerVariants}
+               variants={fadeRightSpring}
                initial="hidden"
                animate="visible"
                exit="exit"

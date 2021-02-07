@@ -7,24 +7,10 @@ import Bus from "../utils/Bus"
 import { Flash } from "../components/shared/Flash"
 import { motion } from "framer-motion"
 import NProgress from "nprogress"
+import { fade } from "../animations"
 
-import { DashboardDisplay, DefaultDisplay, PostSingle } from "./display"
+import { DashboardDisplay, DefaultDisplay, EmptyDisplay } from "./display"
 import siteConfig from "../theme/site-config"
-
-// Animation Options
-const containerVariants = {
-   hidden: {
-      opacity: 0,
-   },
-   visible: {
-      opacity: 1,
-      transition: { duration: 0.5 },
-   },
-   exit: {
-      opacity: 0,
-      transition: { ease: "easeInOut" },
-   },
-}
 
 export default function DefaultLayout({ children }) {
    const { theme } = useContext(GlobalContexts)
@@ -58,7 +44,7 @@ export default function DefaultLayout({ children }) {
             return <DashboardDisplay>{children}</DashboardDisplay>
 
          case "post":
-            return <PostSingle>{children}</PostSingle>
+            return <EmptyDisplay>{children}</EmptyDisplay>
 
          default:
             return <DefaultDisplay>{children}</DefaultDisplay>
@@ -72,7 +58,7 @@ export default function DefaultLayout({ children }) {
             <link rel="icon" href={siteConfig.favicon} />
          </Head>
 
-         <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+         <motion.div variants={fade} initial="hidden" animate="visible" exit="exit">
             {display(path)}
          </motion.div>
 
