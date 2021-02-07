@@ -27,6 +27,8 @@ export default function Home({ posts }) {
             <Sections.AboutUs />
 
             <Sections.Newsletter />
+
+            <Sections.ContactUs />
          </div>
       </>
    )

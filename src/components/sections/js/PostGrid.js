@@ -1,4 +1,5 @@
-import Image from "next/image"
+//next/image error in production 404
+// import Image from "next/image"
 import styles from "../scss/PostGrid.module.scss"
 
 const data = [
@@ -17,7 +18,7 @@ export default function PostGrid() {
             {data.map((item, index) => (
                <div key={index} className={styles.item}>
                   <figure>
-                     <Image src={item.img} alt={item.text} layout="fill" />
+                     <img src={item.img} alt={item.text} layout="fill" />
                   </figure>
 
                   <div className={styles.content}>
