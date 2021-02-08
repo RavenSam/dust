@@ -43,7 +43,8 @@ p {
    margin: 0.8rem 0;
 }
 
-input {
+input,
+textarea {
    border: 1px solid transparent;
    border-radius: 30px;
    background-color: var(--color-in);
@@ -51,9 +52,15 @@ input {
    color: var(--color-text);
    letter-spacing: 1.5px;
    font-size: 1rem;
+   outline: none;
 }
 
-input:focus {
+textarea {
+   border-radius: 10px !important;
+}
+
+input:focus,
+textarea:focus {
    border-color: var(--color-primary);
 }
 
