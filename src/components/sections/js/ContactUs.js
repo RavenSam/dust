@@ -45,7 +45,7 @@ export default function ContactUs() {
                <h3>Reach us Directly</h3>
 
                <div className={styles.map}>
-                  <iframe src="http://maps.google.com/maps?q=42.466905,-96.418833&z=10&output=embed"></iframe>
+                  <iframe src="https://maps.google.com/maps?q=42.466905,-96.418833&z=10&output=embed"></iframe>
                </div>
             </div>
          </div>

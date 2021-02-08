@@ -1,5 +1,5 @@
 // Components
-import { Header } from "../../components"
+import { Header, Footer } from "../../components"
 
 export default function DefaultDisplay({ children }) {
    return (
@@ -7,6 +7,8 @@ export default function DefaultDisplay({ children }) {
          <Header position="fixed" />
 
          {children}
+
+         <Footer />
       </>
    )
 }
