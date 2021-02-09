@@ -1,33 +1,18 @@
-const UserProfile = (function () {
-   let user = null
+import Cookies from "universal-cookie"
 
+const cookies = new Cookies()
+
+const UserProfile = (function () {
    const storageName = "UserProfile"
 
-   const getUser = () => {
-      // Also set this in cookie/localStorage
+   // Return the user stored in cookie return null if no User found
+   const getUser = () => cookies.get(storageName) || null
 
-      if (typeof window !== "undefined") {
-         //  Using SessionStorage
-         return JSON.parse(sessionStorage.getItem(storageName))
-      }
+   // Store the user ptofile in a Cookie
+   const setUser = (profile) => cookies.set(storageName, profile, { path: "/" })
 
-      return user
-   }
-
-   const setUser = (profile) => {
-      // Or pull this from cookie/localStorage
-      if (typeof window !== "undefined") {
-         // Using Session
-         sessionStorage.setItem(storageName, JSON.stringify(profile))
-      }
-   }
-
-   const userLogout = () => {
-      if (typeof window !== "undefined") {
-         // Using Session
-         sessionStorage.clear()
-      }
-   }
+   // Remove The user profile from the cookie
+   const userLogout = () => cookies.remove(storageName)
 
    return {
       getUser,
@@ -37,18 +22,3 @@ const UserProfile = (function () {
 })()
 
 export default UserProfile
-
-// export const expir = (hours = 24) => {
-//    // Reset when storage is more than 24hours
-//    const now = new Date().getTime()
-
-//    const setupTime = sessionStorage.getItem("setupTime")
-//    if (setupTime == null) {
-//       sessionStorage.setItem("setupTime", now)
-//    } else {
-//       if (now - setupTime > hours * 60 * 60 * 1000) {
-//          sessionStorage.clear()
-//          //  sessionStorage.setItem("setupTime", now)
-//       }
-//    }
-// }

@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
 
    password: String,
 
+   bookmarks: Array,
+
+   history: [{ id: String, date: Date }],
+
    gender: String,
 
    thumbnail: {
