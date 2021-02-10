@@ -137,7 +137,7 @@ export default function LogIn() {
                      <p className={styles.error}>{formik.errors.password}</p>
                   )}
 
-                  <button type="submit" className="btn btn-primary" disabled={loading && "true"}>
+                  <button type="submit" className="btn btn-primary" disabled={loading}>
                      {loading ? <Loader type="Oval" color="#fff" height={20} width={20} /> : "Login"}
                   </button>
                </form>

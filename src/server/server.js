@@ -36,12 +36,15 @@ app.prepare().then(() => {
       })
    )
 
+   server.use(cors())
+
    // initialize passport
    server.use(passport.initialize())
    server.use(passport.session())
 
    //    Routes
    server.use("/api/auth", require("./routes/auth"))
+   server.use("/api/userInfo", require("./routes/userInfo"))
 
    // Access Only If Logged In
    // redirect to login page if user is not logged in

@@ -17,7 +17,15 @@ const userSchema = new mongoose.Schema({
 
    bookmarks: Array,
 
-   history: [{ id: String, date: Date }],
+   history: [
+      {
+         id: String,
+         date: {
+            type: Date,
+            default: Date.now,
+         },
+      },
+   ],
 
    gender: String,
 

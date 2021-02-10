@@ -1,7 +1,9 @@
-import Router from "next/router"
+import { useRouter } from "next/router"
 import * as Icons from "heroicons-react"
 
 export default function BackButton({ color }) {
+   const router = useRouter()
+
    const customStyles = {
       cursor: "pointer",
       color: color || "var(--color-text)",
@@ -11,5 +13,12 @@ export default function BackButton({ color }) {
       padding: 7,
    }
 
-   return <Icons.ArrowLeft title="Go Back" style={customStyles} className="backBtn" onClick={() => Router.back()} />
+   return (
+      <Icons.ArrowLeft
+         title="Go Back"
+         style={customStyles}
+         className="backBtn"
+         onClick={() => router.back({ shallow: true })}
+      />
+   )
 }

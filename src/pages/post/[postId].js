@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import axios from "axios"
 import * as Icons from "heroicons-react"
 import Link from "next/link"
@@ -8,11 +9,33 @@ import LoadingPage from "../../components/shared/LoadingPage"
 import { motion } from "framer-motion"
 import { fromRight } from "../../animations"
 import BackButton from "../../components/shared/BackButton"
+import Loader from "react-loader-spinner"
 
 import styles from "../../styles/SinglePost.module.scss"
 
 export default function Post({ post, comments }) {
+   const [loading, setLoading] = useState(false)
+
    if (!post) return <LoadingPage />
+
+   // Adding and removing from bookmarks
+   const handleBookmark = async () => {
+      try {
+         setLoading(true)
+         const { data } = await axios.put("/api/userInfo/bookmarks", { postId: post.id })
+         setLoading(false)
+
+         window.flash(data.msg)
+         console.log(data)
+      } catch (error) {
+         console.log(error)
+      }
+   }
+
+   // I Fought But I Lost... sorry.
+   // RUN TWICE I Don't know WHY
+   // I will Fixed it on backend
+   useEffect(async () => await axios.put("/api/userInfo/history", { postId: post.id }), [])
 
    return (
       <>
@@ -23,7 +46,13 @@ export default function Post({ post, comments }) {
                      <BackButton color="#fff" />
                   </div>
                   <div className="rightSide">
-                     <Icons.BookmarkOutline />
+                     <button onClick={handleBookmark} disabled={loading} style={{ color: "#fff" }}>
+                        {loading ? (
+                           <Loader type="Oval" color="#fff" height={20} width={20} />
+                        ) : (
+                           <Icons.BookmarkOutline />
+                        )}
+                     </button>
                   </div>
                </nav>
 
