@@ -36,14 +36,27 @@
       flex: 1;
       z-index: 2;
 
+      figure {
+         overflow: hidden;
+         border-radius: 20px 200px 20px 200px;
+         height: 500px;
+         max-width: 500px;
+         margin-left: auto;
+         img {
+            object-fit: cover;
+         }
+      }
+
       h2 {
          font-size: 1.5rem;
          text-align: end;
          opacity: 0.8;
          text-transform: capitalize;
+         display: none;
       }
 
       .input {
+         display: none;
          position: relative;
          width: 80%;
          border: 1px solid transparent;
@@ -54,6 +67,7 @@
          input {
             padding: 10px 20px 10px 45px;
             width: 100%;
+            transition: all 0.3s ease-in-out;
          }
 
          & > svg {
@@ -93,13 +107,19 @@
          width: 100%;
          padding: 0;
 
+         figure {
+            display: none;
+         }
+
          .input {
             width: 100%;
             margin: 1rem 0;
+            display: block;
          }
 
          h2 {
             text-align: center;
+            display: block;
          }
       }
    }
