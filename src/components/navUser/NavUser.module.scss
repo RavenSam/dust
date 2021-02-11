@@ -4,7 +4,6 @@
    position: fixed;
    background: var(--color-cd);
    transition: width 0.2s ease;
-   
 
    ul {
       display: flex;
@@ -54,7 +53,7 @@
       a:hover,
       .current a {
          color: var(--color-primary);
-         background-color: var(--color-overlay-0);
+         background-color: var(--color-bg);
       }
    }
 

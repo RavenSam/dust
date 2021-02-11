@@ -41,9 +41,12 @@ export async function getServerSideProps(ctx) {
          headers: { "app-id": process.env.NEXT_PUBLIC_DUMMY_API_ID },
       })
 
+      // Retun with no error return API DATA
       return {
          props: { posts: data.data },
       }
+
+      // if error return Dummy data
    } catch (err) {
       console.log(err)
       return {

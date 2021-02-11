@@ -60,15 +60,15 @@ export default function HistoryTab({ styles, history }) {
          <section>
             <h1>History</h1>
 
-            <div className={styles.ctr}>
-               <p>Recent History</p>
+            {postHistory.data && (
+               <div className={styles.ctr}>
+                  <p>Recent History</p>
 
-               {postHistory && (
                   <button onClick={clearHistory} disabled={loading} style={{ color: "#fff" }}>
                      {loading ? <Loader type="Oval" color="#fff" height={20} width={20} /> : <Icons.Trash />}
                   </button>
-               )}
-            </div>
+               </div>
+            )}
          </section>
 
          {postHistory.data ? <PostList posts={postHistory} /> : <p style={{ textAlign: "center" }}>history is Empty</p>}

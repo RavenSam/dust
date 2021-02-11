@@ -7,7 +7,6 @@ import LoadingPage from "../../components/shared/LoadingPage"
 const DashboardTab = dynamic(() => import("../../components/tabs/DashboardTab"))
 const BookmarkTab = dynamic(() => import("../../components/tabs/BookmarkTab"))
 const HistoryTab = dynamic(() => import("../../components/tabs/HistoryTab"))
-const SettingsTab = dynamic(() => import("../../components/tabs/SettingsTab"))
 
 import styles from "../../styles/user/Dashboard.module.scss"
 
@@ -28,9 +27,6 @@ export default function Dashboard({ user, tab }) {
 
       case 3:
          return <HistoryTab styles={styles} history={user.history} />
-
-      case 4:
-         return <SettingsTab styles={styles} />
 
       default:
          return <DashboardTab styles={styles} />

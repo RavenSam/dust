@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
+    "bizcharts": "3.5.8",
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv-webpack": "^6.0.0",

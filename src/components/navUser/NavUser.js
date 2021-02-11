@@ -9,7 +9,6 @@ const tabs = [
    { name: "Dashboard", icon: Icons.AdjustmentsOutline, tab: 1 },
    { name: "Bookmak", icon: Icons.BookmarkOutline, tab: 2 },
    { name: "History", icon: Icons.ClockOutline, tab: 3 },
-   { name: "Settings", icon: Icons.CogOutline, tab: 4 },
 ]
 
 export default function NavUser({ user, setTab, tab }) {
@@ -19,7 +18,7 @@ export default function NavUser({ user, setTab, tab }) {
       <>
          <div className={`${styles.NavUser} navbar`}>
             <ul>
-               {user && (
+               {/* {user && (
                   <li className={styles.thumbnail}>
                      <Link href="/">
                         <a>
@@ -28,7 +27,7 @@ export default function NavUser({ user, setTab, tab }) {
                         </a>
                      </Link>
                   </li>
-               )}
+               )} */}
 
                {tabs.map((t, index) => (
                   <li key={index} className={`${styles.navItem} ${tab == t.tab && styles.current}`}>
