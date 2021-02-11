@@ -6,6 +6,9 @@ import { fade } from "../animations"
 import styles from "../styles/Home.module.scss"
 
 export default function Home({ posts }) {
+    
+   
+    
    return (
       <>
          <Head>
@@ -35,8 +38,8 @@ export default function Home({ posts }) {
 }
 
 export async function getServerSideProps(ctx) {
-   const { data } = await axios.get(`${process.env.DUMMY_API_URL}/post?limit=5`, {
-      headers: { "app-id": process.env.DUMMY_API_ID },
+   const { data } = await axios.get(`${process.env.NEXT_PUBLIC_DUMMY_API_URL}/post?limit=5`, {
+      headers: { "app-id": process.env.NEXT_PUBLIC_DUMMY_API_ID },
    })
 
    return {

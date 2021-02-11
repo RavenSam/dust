@@ -25,6 +25,27 @@ router.put("/history", (req, res) => {
 })
 
 /** ********************************************************************
+ *  ====> CLEAR USER HISTORY
+ *  *********************************************************************
+ * @route   ==> /api/userInfo/history
+ * @description
+ */
+router.delete("/history", (req, res) => {
+   if (req.user) {
+      User.updateOne({ email: req.user.email }, { $set: { history: [] } }, { multi: true })
+         .then((updateInfo) => {
+            res.json({ HistoryCleared: true, updateInfo })
+         })
+         .catch((err) => {
+            console.log(err)
+            res.json({ HistoryCleared: false })
+         })
+   } else {
+      res.json({ msg: "User Not Logged or something else..." })
+   }
+})
+
+/** ********************************************************************
  *  ====> UPDATE USER BOOKMARK
  *  *********************************************************************
  * @route   ==> /api/userInfo/bookmark

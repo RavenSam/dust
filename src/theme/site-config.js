@@ -9,5 +9,5 @@ export default {
       logoBlack: "/img/logo/DustLogoBlack.png",
    },
 
-   favicon: "/favicon.ico",
+   favicon: "/favicon.png",
 }

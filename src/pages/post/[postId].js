@@ -140,12 +140,12 @@ export default function Post({ post, comments }) {
 
 export async function getStaticProps({ params }) {
    try {
-      const post = await axios.get(`${process.env.DUMMY_API_URL}/post/${params.postId}`, {
-         headers: { "app-id": process.env.DUMMY_API_ID },
+      const post = await axios.get(`${process.env.NEXT_PUBLIC_DUMMY_API_URL}/post/${params.postId}`, {
+         headers: { "app-id": process.env.NEXT_PUBLIC_DUMMY_API_ID },
       })
 
-      const comments = await axios.get(`${process.env.DUMMY_API_URL}/post/${params.postId}/comment`, {
-         headers: { "app-id": process.env.DUMMY_API_ID },
+      const comments = await axios.get(`${process.env.NEXT_PUBLIC_DUMMY_API_URL}/post/${params.postId}/comment`, {
+         headers: { "app-id": process.env.NEXT_PUBLIC_DUMMY_API_ID },
       })
 
       return {

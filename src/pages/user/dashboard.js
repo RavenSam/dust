@@ -24,16 +24,16 @@ export default function Dashboard({ user, tab }) {
 
    switch (tab) {
       case 2:
-         return <BookmarkTab />
+         return <BookmarkTab styles={styles} bm={user.bookmarks} />
 
       case 3:
-         return <HistoryTab />
+         return <HistoryTab styles={styles} history={user.history} />
 
       case 4:
-         return <SettingsTab />
+         return <SettingsTab styles={styles} />
 
       default:
-         return <DashboardTab />
+         return <DashboardTab styles={styles} />
    }
 }
 
