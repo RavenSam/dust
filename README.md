@@ -6,6 +6,8 @@
 
 ---
 
+## [Preview the Blog](https://dust-blog.herokuapp.com/)
+
 ### Install the dependencys
 
 ```bash
