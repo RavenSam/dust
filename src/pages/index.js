@@ -2,13 +2,11 @@ import Head from "next/head"
 import * as Sections from "../components/sections"
 import axios from "axios"
 import { fade } from "../animations"
+import dummyData from "../../dummyData.json"
 
 import styles from "../styles/Home.module.scss"
 
 export default function Home({ posts }) {
-    
-   
-    
    return (
       <>
          <Head>
@@ -38,11 +36,18 @@ export default function Home({ posts }) {
 }
 
 export async function getServerSideProps(ctx) {
-   const { data } = await axios.get(`${process.env.NEXT_PUBLIC_DUMMY_API_URL}/post?limit=5`, {
-      headers: { "app-id": process.env.NEXT_PUBLIC_DUMMY_API_ID },
-   })
+   try {
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_DUMMY_API_URL}/post?limit=5`, {
+         headers: { "app-id": process.env.NEXT_PUBLIC_DUMMY_API_ID },
+      })
 
-   return {
-      props: { posts: data.data },
+      return {
+         props: { posts: data.data },
+      }
+   } catch (err) {
+      console.log(err)
+      return {
+         props: { posts: dummyData },
+      }
    }
 }

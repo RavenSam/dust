@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Head from "next/head"
+import { useRouter } from "next/router"
 import PostList from "../postsDisplay/PostList"
 import LoadingPage from "../../components/shared/LoadingPage"
 import * as Icons from "heroicons-react"
@@ -9,6 +10,8 @@ import axios from "axios"
 export default function HistoryTab({ styles, history }) {
    const [postHistory, setPostHistory] = useState([])
    const [loading, setLoading] = useState(false)
+
+   const router = useRouter()
 
    const limiter = history.length <= 5 ? history : history.slice(0, 6)
    useEffect(() => {
@@ -40,9 +43,9 @@ export default function HistoryTab({ styles, history }) {
       try {
          setLoading(true)
          const { data } = await axios.delete("/api/userInfo/history")
-         setLoading(false)
 
-         window.flash("History was Successfully Cleared")
+         setLoading(false)
+         router.reload()
       } catch (error) {
          console.log(error)
       }

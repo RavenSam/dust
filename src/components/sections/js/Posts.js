@@ -6,12 +6,10 @@ import Carousel from "../../carousel/Carousel"
 
 import styles from "../scss/Posts.module.scss"
 
-export default function Posts({ posts, carousel = false }) {
-   const Wraper = carousel ? Carousel : Fragment
-
+export default function Posts({ posts }) {
    return (
       <section className={styles.postsCarousel}>
-         <Wraper items={5} autoWidth>
+         <Carousel items={5} autoWidth>
             {posts.map((post) => (
                <div key={post.id} className={`${styles.post} `}>
                   <Link href={`/post/${post.id}`}>
@@ -29,7 +27,7 @@ export default function Posts({ posts, carousel = false }) {
                   </Link>
                </div>
             ))}
-         </Wraper>
+         </Carousel>
       </section>
    )
 }
