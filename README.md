@@ -33,3 +33,4 @@ Then you can access it at http://localhost:3000.
 -  Form validation and submition with [Formik](https://formik.org/) and [Yup](https://www.npmjs.com/package/yup).
 -  Data storage on [MongoDb](https://mongodb.com).
 -  Light and Dark Theme toggle.
+-  Animation with [Framer motion](https://www.framer.com/motion/).
