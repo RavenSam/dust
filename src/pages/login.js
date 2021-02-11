@@ -24,8 +24,8 @@ export default function LogIn() {
    // Formik
    const formik = useFormik({
       initialValues: {
-         email: "saradow@gmail.com",
-         password: "12345678",
+         email: "",
+         password: "",
       },
       validationSchema: Yup.object({
          email: Yup.string().email("Invalid email format").required("Required!"),

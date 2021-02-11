@@ -24,10 +24,10 @@ export default function SignUp() {
    // Formik
    const formik = useFormik({
       initialValues: {
-         username: "saradow",
-         email: "saradow@gmail.com",
-         password: "12345678",
-         password2: "12345678",
+         username: "",
+         email: "",
+         password: "",
+         password2: "",
       },
       validationSchema: Yup.object({
          username: Yup.string().min(5, "Mininum 5 characters").max(15, "Maximum 15 characters").required("Required!"),
