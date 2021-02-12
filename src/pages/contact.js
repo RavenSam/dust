@@ -1,7 +1,7 @@
 import { ContactUs } from "../components/sections"
 import Head from "next/head"
 
-import styles from "../styles/contact.module.scss"
+import styles from "../styles/Contact.module.scss"
 
 export default function Contact() {
    return (
