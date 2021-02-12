@@ -6,7 +6,11 @@ import UserProfile from "../../utils/user_profile"
 
 import ThemeSwitcher from "../shared/ThemeSwitcher"
 
-const pagesLinks = [{ name: "Home", href: "/" }]
+const pagesLinks = [
+   { name: "Home", href: "/" },
+   { name: "About", href: "/about" },
+   { name: "Contact", href: "/contact" },
+]
 
 const userLinks = [{ name: "Dashboard", href: "/user/dashboard" }]
 

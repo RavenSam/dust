@@ -4,12 +4,12 @@ import * as Icons from "heroicons-react"
 
 import styles from "../scss/ContactUs.module.scss"
 
-export default function ContactUs() {
+export default function ContactUs({ title = true }) {
    const [loading, setLoading] = useState(false)
 
    return (
       <section className={styles.contactUs}>
-         <h2>Contact Us</h2>
+         {title && <h2>Contact Us</h2>}
 
          <div className={styles.contacts}>
             <div className={styles.address}>
