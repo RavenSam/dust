@@ -104,6 +104,7 @@ export default function SignUp() {
                         type="text"
                         placeholder="Username"
                         name="username"
+                        onBlur={formik.handleBlur}
                         value={formik.values.username}
                         onChange={formik.handleChange}
                      />
@@ -119,6 +120,7 @@ export default function SignUp() {
                         type="text"
                         placeholder="Email"
                         name="email"
+                        onBlur={formik.handleBlur}
                         value={formik.values.email}
                         onChange={formik.handleChange}
                      />
@@ -130,6 +132,7 @@ export default function SignUp() {
                         type={showPw ? "text" : "password"}
                         placeholder="Your Password"
                         name="password"
+                        onBlur={formik.handleBlur}
                         value={formik.values.password}
                         onChange={formik.handleChange}
                      />
@@ -148,6 +151,7 @@ export default function SignUp() {
                         type={showPw2 ? "text" : "password"}
                         placeholder="Confirm Password"
                         name="password2"
+                        onBlur={formik.handleBlur}
                         value={formik.values.password2}
                         onChange={formik.handleChange}
                      />

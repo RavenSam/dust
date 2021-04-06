@@ -109,6 +109,7 @@ export default function LogIn() {
                         type="text"
                         placeholder="Your Email"
                         name="email"
+                        onBlur={formik.handleBlur}
                         value={formik.values.email}
                         onChange={formik.handleChange}
                      />
@@ -123,6 +124,7 @@ export default function LogIn() {
                         type={showPw ? "text" : "password"}
                         placeholder="Your Password"
                         name="password"
+                        onBlur={formik.handleBlur}
                         value={formik.values.password}
                         onChange={formik.handleChange}
                      />
@@ -149,7 +151,7 @@ export default function LogIn() {
                   </Link>
                </p>
 
-               <Link href="/">
+               <Link href="#">
                   <a className={styles.forgetPw}>Forget your password?</a>
                </Link>
             </motion.div>
